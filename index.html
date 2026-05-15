@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SuperSymm — A Personalized Digital Marketing Plan for Your Business</title>
+<meta name="description" content="Stuck on what your marketing should be doing? Get a custom digital marketing playbook built from real analysis of your business, market, opportunities, and areas to improve — all planned out for you.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F9F6EE;
+  --bg-card: #FFFFFF;
+  --bg-deep: #F0EBDC;
+  --bg-tint: #FAF4E3;
+  --rule: #D9D2BE;
+  --rule-strong: #A89F8A;
+  --ink: #1A1612;
+  --ink-soft: #3A342A;
+  --ink-mute: #6B6253;
+  --ink-faint: #968C7A;
+  --accent: #3D2459;
+  --accent-soft: #6B3A8A;
+  --accent-dark: #2A1740;
+  --accent-tint: rgba(61, 36, 89, 0.08);
+  /* Logo brand gradient — retained at full saturation for the logo only */
+  --brand-gradient-start: #22193B;
+  --brand-gradient-end: #9B4A8B;
+  --cream: #F9F6EE;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 56px; }
+
+/* ═══ HEADER (sticky with anchor nav) ═══ */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba(249, 246, 238, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+  z-index: 50;
+}
+
+.site-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+/* ═══ FULL LOGO (SVG mark + wordmark) ═══ */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-logo-mark {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.brand-logo-mark path {
+  stroke: url(#brandGradient);
+  stroke-width: 3;
+  fill: none;
+}
+
+.brand-logo-wordmark {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--brand-gradient-start) 0%, var(--brand-gradient-end) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Larger sizing for partner section context */
+.brand-logo.large .brand-logo-mark {
+  width: 48px;
+  height: 48px;
+}
+
+.brand-logo.large .brand-logo-wordmark {
+  font-size: 30px;
+}
+
+/* Smaller sizing for footer context */
+.brand-logo.small .brand-logo-mark {
+  width: 28px;
+  height: 28px;
+}
+
+.brand-logo.small .brand-logo-wordmark {
+  font-size: 20px;
+}
+
+.anchor-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.anchor-nav a {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.18s;
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.anchor-nav a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: var(--accent);
+  color: var(--cream);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+
+.header-cta:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: var(--cream);
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  padding: 80px 0 88px;
+  max-width: 920px;
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 76px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent-dark);
+}
+
+.hero-sub {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 25px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin-bottom: 44px;
+  max-width: 780px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 30px;
+  background: var(--accent);
+  color: var(--cream);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.18s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: var(--cream);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 24px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.18s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--ink);
+  background: var(--bg-deep);
+}
+
+.hero-who-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--ink-mute);
+  margin-top: 8px;
+}
+
+.hero-who-link a {
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+.hero-who-link a:hover {
+  color: var(--accent);
+}
+
+/* ═══ STATS BAR ═══ */
+.stats-bar {
+  background: var(--bg-deep);
+  padding: 56px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.stats-intro {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 36px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0 8px;
+}
+
+.stat-number {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 56px;
+  font-weight: 500;
+  color: var(--accent-dark);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+
+.stat-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ═══ SECTION STRUCTURE ═══ */
+.section { padding: 96px 0; }
+.section.tinted { background: var(--bg-deep); }
+
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 16px;
+}
+
+.section-eyebrow.accent { color: var(--accent-dark); }
+
+.section-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.section-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-dark);
+}
+
+.section-intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 56px;
+  max-width: 720px;
+}
+
+/* ═══ WHAT IT IS ═══ */
+.what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.what-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.what-text p { margin-bottom: 18px; }
+.what-text p:last-child { margin-bottom: 0; }
+.what-text strong { color: var(--ink); font-weight: 600; }
+
+.what-aside {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 32px 28px;
+}
+
+.what-aside-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 12px;
+}
+
+.what-aside-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.what-aside-list { list-style: none; }
+
+.what-aside-list li {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--ink-soft);
+  padding: 10px 0 10px 22px;
+  position: relative;
+  border-top: 1px solid var(--rule);
+  line-height: 1.45;
+}
+
+.what-aside-list li:first-child { border-top: none; }
+
+.what-aside-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ═══ WHO IT'S FOR — extra horizontal padding via wider gutters ═══ */
+.section.fit .page-wrap {
+  padding-left: 96px;
+  padding-right: 96px;
+}
+
+.who-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.who-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 36px 32px;
+}
+
+.who-card-icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 14px;
+}
+
+.who-card-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.who-card-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ═══ DELIVERABLES — expanded with channel coverage banner ═══ */
+.deliverables-channels {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin-bottom: 36px;
+  background: var(--bg-deep);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.deliverables-channel {
+  padding: 16px 12px;
+  text-align: center;
+  border-right: 1px solid var(--rule);
+}
+
+.deliverables-channel:last-child { border-right: none; }
+
+.deliverables-channel-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+}
+
+.deliverables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.deliverable {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 24px 26px;
+  border-radius: 4px;
+}
+
+.deliverable-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 3px 8px;
+  margin-bottom: 10px;
+}
+
+.deliverable-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.deliverable-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* ═══ PRICING TIERS ═══ */
+.tier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.15fr;
+  gap: 16px;
+}
+
+.tier-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-card.recommended {
+  border-color: var(--accent);
+  border-width: 2px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(61, 36, 89, 0.10);
+}
+
+.tier-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: var(--cream);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.tier-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 12px;
+}
+
+.tier-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.tier-price {
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.tier-price-suffix {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-mute);
+  margin-bottom: 20px;
+}
+
+.tier-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tier-features { list-style: none; flex: 1; margin-bottom: 22px; }
+
+.tier-feature {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding: 7px 0 7px 22px;
+  position: relative;
+}
+
+.tier-feature::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.tier-cta {
+  display: block;
+  text-align: center;
+  padding: 14px 20px;
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.18s;
+  text-transform: uppercase;
+}
+
+.tier-cta:hover { background: var(--accent); border-color: var(--accent); color: var(--cream); }
+
+.tier-card.recommended .tier-cta { background: var(--accent); border-color: var(--accent); color: var(--cream); }
+.tier-card.recommended .tier-cta:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: var(--cream); }
+
+/* ═══ SAMPLE PREVIEW SECTION ═══ */
+.sample-block {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 48px 48px 44px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.sample-content { padding-right: 12px; }
+
+.sample-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 14px;
+}
+
+.sample-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.sample-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+
+.sample-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 24px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.18s;
+}
+
+.sample-link:hover { background: var(--accent); color: var(--cream); }
+
+.sample-visual {
+  background: var(--bg-deep);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 24px;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sample-visual-bar { display: flex; gap: 6px; margin-bottom: 16px; }
+.sample-visual-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rule-strong); }
+
+.sample-visual-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+.sample-visual-tab {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 4px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sample-visual-tab.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+.sample-visual-content { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+.sample-visual-line { height: 8px; border-radius: 2px; background: var(--rule); }
+.sample-visual-line.short { width: 60%; }
+.sample-visual-line.medium { width: 85%; }
+.sample-visual-line.title { height: 14px; background: var(--rule-strong); width: 70%; margin-bottom: 4px; }
+
+.sample-visual-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 8px;
+  flex: 1;
+}
+
+.sample-visual-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sample-visual-card-line { height: 5px; border-radius: 1px; background: var(--rule); }
+.sample-visual-card-line.first { height: 6px; background: var(--rule-strong); width: 70%; }
+
+.sample-visual-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--bg-deep) 80%);
+  pointer-events: none;
+}
+
+/* ═══ PARTNER SECTION ═══ */
+.partner-block {
+  background: var(--bg-deep);
+  border: 2px solid var(--accent);
+  padding: 56px 56px 52px;
+  border-radius: 6px;
+}
+
+.partner-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 14px;
+}
+
+.partner-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+
+.partner-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.partner-intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  max-width: 720px;
+}
+
+.partner-services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 28px;
+  margin-bottom: 36px;
+}
+
+.partner-service {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.partner-service::before {
+  content: '→';
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+  font-size: 15px;
+}
+
+.partner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 30px;
+  background: var(--accent);
+  color: var(--cream);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.18s;
+  text-transform: uppercase;
+}
+
+.partner-cta:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: var(--cream); }
+
+/* ═══ FAQ ═══ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 820px;
+}
+
+.faq-item {
+  border-top: 1px solid var(--rule);
+  padding: 24px 0;
+}
+
+.faq-item:last-child { border-bottom: 1px solid var(--rule); }
+
+.faq-question {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.faq-answer {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.faq-answer strong { color: var(--ink); font-weight: 600; }
+.faq-answer a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.faq-answer a:hover { color: var(--accent); }
+
+/* ═══ FINAL CTA ═══ */
+.final-cta {
+  text-align: center;
+  padding: 96px 0 88px;
+  background: var(--bg-deep);
+}
+
+.final-cta-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 20px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-cta-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent-dark);
+}
+
+.final-cta-sub {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-cta .btn-primary { padding: 18px 36px; font-size: 15px; }
+
+/* ═══ FOOTER ═══ */
+.footer {
+  padding: 44px 0 30px;
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+}
+
+.footer-tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-mute);
+  text-align: center;
+  flex: 1;
+  padding: 0 24px;
+}
+
+.footer-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-mute);
+  text-decoration: none;
+}
+
+.footer-link:hover { color: var(--accent); }
+
+.footer-meta {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1024px) {
+  .anchor-nav { gap: 20px; }
+  .anchor-nav a { font-size: 13px; }
+}
+
+@media (max-width: 900px) {
+  .anchor-nav { display: none; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .what-grid, .sample-block, .partner-services {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .who-grid { grid-template-columns: 1fr; gap: 16px; }
+  .deliverables { grid-template-columns: 1fr; gap: 14px; }
+  .deliverables-channels { grid-template-columns: 1fr 1fr; }
+  .deliverables-channel { border-right: none; border-bottom: 1px solid var(--rule); }
+  .deliverables-channel:nth-last-child(-n+2) { border-bottom: none; }
+  .deliverables-channel:nth-child(2n) { border-right: none; }
+  .tier-grid { grid-template-columns: 1fr; gap: 20px; }
+  .hero-title { font-size: 56px; }
+  .hero-sub { font-size: 22px; }
+  .section-title { font-size: 36px; }
+  .section.fit .page-wrap { padding-left: 56px; padding-right: 56px; }
+  .final-cta-title { font-size: 40px; }
+}
+
+@media (max-width: 760px) {
+  .page-wrap { padding: 0 24px; }
+  .site-header-inner { padding: 14px 24px; }
+  .header-cta { padding: 9px 16px; font-size: 12px; }
+  .hero { padding: 56px 0 64px; }
+  .hero-title { font-size: 42px; }
+  .hero-sub { font-size: 19px; }
+  .stats-bar { padding: 40px 0; }
+  .stats-grid { grid-template-columns: 1fr; gap: 28px; }
+  .stat-number { font-size: 48px; }
+  .section { padding: 64px 0; }
+  .section.fit .page-wrap { padding-left: 24px; padding-right: 24px; }
+  .section-title { font-size: 30px; }
+  .partner-block { padding: 36px 28px; }
+  .partner-title { font-size: 28px; }
+  .sample-block { padding: 32px 28px; }
+  .sample-title { font-size: 24px; }
+  .final-cta-title { font-size: 32px; }
+  .final-cta-sub { font-size: 18px; }
+  .footer-row { flex-direction: column; gap: 12px; text-align: center; }
+  .footer-tagline { padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- Logo gradient (defined once, referenced by all logo instances) -->
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <linearGradient id="brandGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#22193B"/>
+      <stop offset="100%" stop-color="#E977C1"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+
+<!-- HEADER WITH ANCHOR NAV + STICKY CTA -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="#top" class="brand-logo">
+      <svg class="brand-logo-mark" viewBox="0 0 326 323" xmlns="http://www.w3.org/2000/svg" aria-label="SuperSymm">
+        <path d="M95.5825 94.5464L96.0825 1.54639H228.083L321.083 94.5464L255.083 161.546L229.747 189.366L229.583 189.546M96.0825 1.54639L162.583 68.0464L135.083 94.5464M228.083 1.54639V94.5464M321.083 94.5464H228.083M228.083 94.5464H190.583V133.046M69.5825 161.546L3.58252 95.5464L95.5825 94.5464M69.5825 161.546L95.5825 133.046M69.5825 161.546L4.08252 228.046H97.0825M69.5825 161.546L97.0825 188.046M95.5825 133.046H135.083M95.5825 133.046L123.083 161.546M95.5825 133.046V94.5464M135.083 133.046V94.5464M135.083 133.046V149.546M135.083 94.5464H95.5825M135.083 94.5464L162.583 121.046M97.0825 188.046L123.083 161.546M97.0825 188.046H135.083M97.0825 188.046V228.046M123.083 161.546L135.083 149.546M123.083 161.546L135.083 173.046M190.583 133.046H226.583L202.083 161.546M190.583 133.046V150.046M162.583 121.046L150.083 133.046H174.083L190.583 150.046M162.583 121.046L190.083 94.5464L163.583 69.0464M162.583 121.046L174.583 133.546M135.083 149.546V173.046M135.083 173.046V188.046M162.583 254.546L135.083 228.046V188.046M174.083 189.546H151.083L162.583 200.546M162.583 200.546L174.083 189.546L190.583 173.046M190.583 173.046V150.046M190.583 173.046V189.546M190.583 173.046V150.546L202.083 161.546M190.583 173.046L202.083 161.546M202.083 161.546L229.747 189.366M190.583 189.546H229.583M190.583 189.546V226.546M229.583 189.546V226.546L228.583 319.046L162.583 254.546M162.583 200.546L135.083 228.046M189.083 226.546L162.583 254.546M162.583 254.546L98.0825 319.046L97.0825 228.046M163.083 69.0464L228.083 2.04639M191.083 133.046H150.583M150.583 133.046H134.583M150.583 133.046L135.083 149.046V173.546L151.583 190.046M228.083 95.5425V133.248L321.083 225.046C320.887 174.083 321.278 146.01 321.083 95.0464M162.583 201.046L188.083 227.046H321.583L229.583 321.046H97.0825L3.08252 228.546V96.0464L95.5825 1.04639M98.0825 228.046H134.583"/>
+      </svg>
+      <span class="brand-logo-wordmark">supersym</span>
+    </a>
+    <nav class="anchor-nav">
+      <a href="#what-it-is">What It Is</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#sample">Sample</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="./Form_setup/supersymm_intake_form_v1.4.html" class="header-cta">Start Your Playbook →</a>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Custom Digital Marketing Playbooks</div>
+    <h1 class="hero-title">Stop guessing about your marketing. <em>Get a real plan.</em></h1>
+    <p class="hero-sub">If you know your marketing should be working harder but you don't know where to start or what to fix — this is the personalized plan that ends the guesswork. Built specifically for your business, your market, your opportunities, and your areas to improve.</p>
+    <div class="hero-actions">
+      <a href="./Form_setup/supersymm_intake_form_v1.4.html" class="btn-primary">Start Your Playbook →</a>
+      <a href="#sample" class="btn-secondary">See a sample →</a>
+    </div>
+    <p class="hero-who-link">Who is SuperSymm? → <a href="./about.html">A full-cycle digital marketing agency.</a></p>
+  </section>
+
+</div>
+
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="page-wrap">
+    <p class="stats-intro">Most small businesses are stuck in the same place</p>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">46%</div>
+        <div class="stat-label">of small businesses aren't sure if their marketing is actually working</div>
+        <div class="stat-source">Small Business Statistics</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">60%</div>
+        <div class="stat-label">say finding new customers is their top marketing challenge</div>
+        <div class="stat-source">MarketingProfs · 1,335 SMBs surveyed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">53%</div>
+        <div class="stat-label">struggle to stand out in their market and define what makes them different</div>
+        <div class="stat-source">Small Business Statistics</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">14%</div>
+        <div class="stat-label">of revenue is what high-growth small businesses spend on marketing</div>
+        <div class="stat-source">Consultus Digital · 2025 benchmark</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-wrap">
+
+  <!-- WHAT IT IS -->
+  <section class="section" id="what-it-is">
+    <div class="section-eyebrow">01 / The Idea</div>
+    <h2 class="section-title">What it is — and <em>what it isn't</em>.</h2>
+    
+    <div class="what-grid">
+      <div class="what-text">
+        <p>A SuperSymm Playbook is a custom marketing plan for your business. Not a template. Not a generic checklist. An actual personalized document, built from real analysis of your business, your industry, your competitors, your customers, and your current digital presence.</p>
+        <p>It identifies <strong>where the opportunities are</strong>, <strong>which channels to prioritize</strong>, <strong>what's worth your time</strong>, <strong>where you're losing customers</strong>, and <strong>exactly what to do next</strong> — all sequenced against the capacity you actually have.</p>
+        <p>It's the document a small marketing team would build for you over six weeks — except we deliver it in 5 to 14 days for a one-time fee. Yours to keep, share, and execute against.</p>
+      </div>
+      <aside class="what-aside">
+        <div class="what-aside-label">It is NOT</div>
+        <div class="what-aside-title">A retainer, an agency relationship, or a sales call in disguise.</div>
+        <ul class="what-aside-list">
+          <li>No monthly fees</li>
+          <li>No multi-month contracts</li>
+          <li>No discovery calls required</li>
+          <li>No upsell pressure</li>
+          <li>One purchase, one delivery, yours to keep</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+</div>
+
+<!-- WHO IT'S FOR — extra padding via wider gutters -->
+<section class="section fit tinted">
+  <div class="page-wrap">
+    <div class="section-eyebrow">02 / The Fit</div>
+    <h2 class="section-title">Who it's for.</h2>
+    <p class="section-intro">If you run a business and you know your marketing should be working harder but you don't know exactly what to do — this is for you.</p>
+
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-card-icon">// 01</div>
+        <h3 class="who-card-title">Founders without a marketing team</h3>
+        <p class="who-card-text">You're wearing the marketing hat alongside everything else. You need a plan you can execute against — or hand to whoever you hire next — without spending three months figuring out the strategy yourself.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-card-icon">// 02</div>
+        <h3 class="who-card-title">Owners with a marketing person but no playbook</h3>
+        <p class="who-card-text">Your marketing person knows tactics. They need a strategic plan that tells them what to prioritize, what to ignore, and what to publish next week. This is that plan.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-card-icon">// 03</div>
+        <h3 class="who-card-title">Teams stuck on what to do next</h3>
+        <p class="who-card-text">You've tried things. Some worked, most didn't. You need an outside perspective on which channels are actually worth your time — and a 90-day calendar that ends the guesswork.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-wrap">
+
+  <!-- WHAT'S INSIDE — expanded with SEO/Paid/Social as distinct deliverables -->
+  <section class="section">
+    <div class="section-eyebrow">03 / The Deliverable</div>
+    <h2 class="section-title">What's inside a SuperSymm Playbook.</h2>
+    <p class="section-intro">Every playbook is built from your specifics — your industry, your competitors, your tech stack, your capacity. We cover every channel that matters for your business, with analysis and recommendations for each.</p>
+
+    <div class="deliverables-channels">
+      <div class="deliverables-channel"><span class="deliverables-channel-label">Strategy</span></div>
+      <div class="deliverables-channel"><span class="deliverables-channel-label">SEO / AEO</span></div>
+      <div class="deliverables-channel"><span class="deliverables-channel-label">Paid Media</span></div>
+      <div class="deliverables-channel"><span class="deliverables-channel-label">Social</span></div>
+      <div class="deliverables-channel"><span class="deliverables-channel-label">Content</span></div>
+    </div>
+
+    <div class="deliverables">
+      <div class="deliverable">
+        <span class="deliverable-tag">Strategy</span>
+        <div class="deliverable-title">Custom marketing playbook</div>
+        <div class="deliverable-desc">A 30-90 day action plan tailored to your business, industry, and capacity — not a template.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">Strategy</span>
+        <div class="deliverable-title">Persona-level audience analysis</div>
+        <div class="deliverable-desc">Documented motivations, objections, and channel preferences for each segment you serve.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">Strategy</span>
+        <div class="deliverable-title">Competitive analysis with SWOT</div>
+        <div class="deliverable-desc">Feature-matrix comparison of your top 2-3 competitors with positioning recommendations.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">SEO / AEO</span>
+        <div class="deliverable-title">SEO &amp; AI search analysis</div>
+        <div class="deliverable-desc">How you currently rank, where you're invisible, and how AI search tools (ChatGPT, Perplexity, Google AI) describe your business — with a 12-month visibility plan.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">Paid Media</span>
+        <div class="deliverable-title">Paid media strategy &amp; ad creative</div>
+        <div class="deliverable-desc">Channel recommendations (Google, Meta, LinkedIn), targeting, budget allocation, and ready-to-launch ad copy and creative concepts.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">Social</span>
+        <div class="deliverable-title">Social media strategy &amp; analysis</div>
+        <div class="deliverable-desc">Audit of your current social presence, channel-by-channel recommendations, and a posting strategy mapped to where your audience actually is.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">Content</span>
+        <div class="deliverable-title">90-day content calendar</div>
+        <div class="deliverable-desc">Publishing calendar with topics, formats, and channel-specific posts — mapped to your capacity, not someone else's.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">Content</span>
+        <div class="deliverable-title">Ready-to-publish posts &amp; emails</div>
+        <div class="deliverable-desc">Actual social posts, blog drafts, and email sequences — written, compliance-ready, and ready to ship from day one.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">Strategy</span>
+        <div class="deliverable-title">Email lifecycle &amp; nurture flows</div>
+        <div class="deliverable-desc">Welcome sequences, nurture cadences, and conversion flows mapped to your funnel — written and ready to load into your tools.</div>
+      </div>
+      <div class="deliverable">
+        <span class="deliverable-tag">Strategy</span>
+        <div class="deliverable-title">Weekly activation plan</div>
+        <div class="deliverable-desc">Week-by-week sequencing of what to do, in what order, with what capacity — no guesswork on where to start.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+  <!-- PRICING -->
+  <section class="section tinted" id="pricing">
+    <div class="page-wrap">
+      <div class="section-eyebrow accent">04 / Pricing</div>
+      <h2 class="section-title">Three depths. <em>One purchase.</em></h2>
+      <p class="section-intro">Choose the playbook depth that fits where you are. All tiers funnel through one intake form where you'll select the option you want.</p>
+
+      <div class="tier-grid">
+        <!-- Tier 1 -->
+        <div class="tier-card">
+          <div class="tier-label">Tier 1</div>
+          <h3 class="tier-name">Marketing Audit</h3>
+          <div class="tier-price">$497</div>
+          <div class="tier-price-suffix">one-time · delivered in 5-7 days</div>
+          <p class="tier-desc">Full analytical audit and activation plan tailored to your business.</p>
+          <ul class="tier-features">
+            <li class="tier-feature">8-section deep audit</li>
+            <li class="tier-feature">Persona-level audience analysis</li>
+            <li class="tier-feature">Competitive analysis with SWOT</li>
+            <li class="tier-feature">SEO &amp; AI search analysis</li>
+            <li class="tier-feature">90-day activation plan</li>
+          </ul>
+          <a href="./Form_setup/supersymm_intake_form_v1.4.html?tier=1" class="tier-cta">Start Tier 1 →</a>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier-card">
+          <div class="tier-label">Tier 2</div>
+          <h3 class="tier-name">Audit + Channels</h3>
+          <div class="tier-price">$1,200</div>
+          <div class="tier-price-suffix">one-time · delivered in 7-10 days</div>
+          <p class="tier-desc">Tier 1 plus paid media and social strategy.</p>
+          <ul class="tier-features">
+            <li class="tier-feature">Everything in Tier 1</li>
+            <li class="tier-feature">Paid media campaign setup</li>
+            <li class="tier-feature">Social media strategy &amp; audit</li>
+            <li class="tier-feature">Channel-specific ad creative</li>
+          </ul>
+          <a href="./Form_setup/supersymm_intake_form_v1.4.html?tier=2" class="tier-cta">Start Tier 2 →</a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier-card recommended">
+          <div class="tier-badge">Recommended for DIY</div>
+          <div class="tier-label">Tier 3</div>
+          <h3 class="tier-name">Full Campaign Kit</h3>
+          <div class="tier-price">$2,500</div>
+          <div class="tier-price-suffix">one-time · delivered in 10-14 days</div>
+          <p class="tier-desc">Complete playbook with content calendar and ready-to-publish posts.</p>
+          <ul class="tier-features">
+            <li class="tier-feature">Everything in Tier 2</li>
+            <li class="tier-feature">90-day content calendar</li>
+            <li class="tier-feature">Ready-to-publish posts &amp; emails</li>
+            <li class="tier-feature">Email lifecycle sequences</li>
+            <li class="tier-feature">Compliance-ready workflow</li>
+          </ul>
+          <a href="./Form_setup/supersymm_intake_form_v1.4.html?tier=3" class="tier-cta">Start Tier 3 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="page-wrap">
+
+  <!-- SAMPLE PREVIEW -->
+  <section class="section" id="sample">
+    <div class="section-eyebrow">05 / See it in action</div>
+    <h2 class="section-title">Browse a <em>real sample</em>.</h2>
+    <p class="section-intro">Want to see what a finished playbook actually looks like? We built one for a synthetic firm so you can preview every section before you buy.</p>
+
+    <div class="sample-block">
+      <div class="sample-content">
+        <div class="sample-label">Sample · Tier 3 Playbook</div>
+        <h3 class="sample-title">Meridian Wealth Partners</h3>
+        <p class="sample-text">A complete Tier 3 playbook for a Bay Area RIA — 14 tabs covering market analysis, competitive positioning, audience personas, website audit, AI search visibility, paid media strategy, social media plan, content calendar, email lifecycle, and weekly activation. Browse the full deliverable to see the depth and format.</p>
+        <a href="./meridian_playbook_sample.html" target="_blank" rel="noopener" class="sample-link">Open the sample playbook →</a>
+      </div>
+      <div class="sample-visual">
+        <div class="sample-visual-bar">
+          <span class="sample-visual-dot"></span>
+          <span class="sample-visual-dot"></span>
+          <span class="sample-visual-dot"></span>
+        </div>
+        <div class="sample-visual-tabs">
+          <span class="sample-visual-tab active">Summary</span>
+          <span class="sample-visual-tab">Market</span>
+          <span class="sample-visual-tab">Audience</span>
+          <span class="sample-visual-tab">Website</span>
+          <span class="sample-visual-tab">Search</span>
+        </div>
+        <div class="sample-visual-content">
+          <div class="sample-visual-line title"></div>
+          <div class="sample-visual-line medium"></div>
+          <div class="sample-visual-line short"></div>
+          <div class="sample-visual-cards">
+            <div class="sample-visual-card">
+              <div class="sample-visual-card-line first"></div>
+              <div class="sample-visual-card-line"></div>
+              <div class="sample-visual-card-line"></div>
+            </div>
+            <div class="sample-visual-card">
+              <div class="sample-visual-card-line first"></div>
+              <div class="sample-visual-card-line"></div>
+              <div class="sample-visual-card-line"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sample-visual-fade"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <section class="section">
+    <div class="partner-block">
+      <div class="brand-logo large" style="margin-bottom: 32px;">
+        <svg class="brand-logo-mark" viewBox="0 0 326 323" xmlns="http://www.w3.org/2000/svg" aria-label="SuperSymm">
+          <path d="M95.5825 94.5464L96.0825 1.54639H228.083L321.083 94.5464L255.083 161.546L229.747 189.366L229.583 189.546M96.0825 1.54639L162.583 68.0464L135.083 94.5464M228.083 1.54639V94.5464M321.083 94.5464H228.083M228.083 94.5464H190.583V133.046M69.5825 161.546L3.58252 95.5464L95.5825 94.5464M69.5825 161.546L95.5825 133.046M69.5825 161.546L4.08252 228.046H97.0825M69.5825 161.546L97.0825 188.046M95.5825 133.046H135.083M95.5825 133.046L123.083 161.546M95.5825 133.046V94.5464M135.083 133.046V94.5464M135.083 133.046V149.546M135.083 94.5464H95.5825M135.083 94.5464L162.583 121.046M97.0825 188.046L123.083 161.546M97.0825 188.046H135.083M97.0825 188.046V228.046M123.083 161.546L135.083 149.546M123.083 161.546L135.083 173.046M190.583 133.046H226.583L202.083 161.546M190.583 133.046V150.046M162.583 121.046L150.083 133.046H174.083L190.583 150.046M162.583 121.046L190.083 94.5464L163.583 69.0464M162.583 121.046L174.583 133.546M135.083 149.546V173.046M135.083 173.046V188.046M162.583 254.546L135.083 228.046V188.046M174.083 189.546H151.083L162.583 200.546M162.583 200.546L174.083 189.546L190.583 173.046M190.583 173.046V150.046M190.583 173.046V189.546M190.583 173.046V150.546L202.083 161.546M190.583 173.046L202.083 161.546M202.083 161.546L229.747 189.366M190.583 189.546H229.583M190.583 189.546V226.546M229.583 189.546V226.546L228.583 319.046L162.583 254.546M162.583 200.546L135.083 228.046M189.083 226.546L162.583 254.546M162.583 254.546L98.0825 319.046L97.0825 228.046M163.083 69.0464L228.083 2.04639M191.083 133.046H150.583M150.583 133.046H134.583M150.583 133.046L135.083 149.046V173.546L151.583 190.046M228.083 95.5425V133.248L321.083 225.046C320.887 174.083 321.278 146.01 321.083 95.0464M162.583 201.046L188.083 227.046H321.583L229.583 321.046H97.0825L3.08252 228.546V96.0464L95.5825 1.04639M98.0825 228.046H134.583"/>
+        </svg>
+        <span class="brand-logo-wordmark">supersym</span>
+      </div>
+      <div class="partner-eyebrow">Don't want to DIY?</div>
+      <h2 class="partner-title">Need a partner to <em>build and run</em> all of this for you?</h2>
+      <p class="partner-intro">A playbook tells you what to do. SuperSymm can also be the team that executes it — building your tech stack, automating your channels, and running the day-to-day so you can focus on the work that actually generates revenue.</p>
+
+      <div class="partner-services">
+        <div class="partner-service">Build &amp; integrate your marketing tech stack</div>
+        <div class="partner-service">Automate social media posting &amp; engagement</div>
+        <div class="partner-service">Email lifecycle &amp; nurture campaigns</div>
+        <div class="partner-service">Lead generation &amp; qualification systems</div>
+        <div class="partner-service">Paid media management &amp; optimization</div>
+        <div class="partner-service">Content production &amp; publishing workflows</div>
+      </div>
+
+      <a href="https://calendly.com/supersymm" target="_blank" rel="noopener" class="partner-cta">Book a call to chat more →</a>
+    </div>
+  </section>
+
+</div>
+
+  <!-- FAQ -->
+  <section class="section tinted" id="faq">
+    <div class="page-wrap">
+      <div class="section-eyebrow">06 / Common Questions</div>
+      <h2 class="section-title">Questions worth answering.</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3 class="faq-question">How is this different from hiring a marketing agency?</h3>
+          <p class="faq-answer">An agency charges a monthly retainer ($3K-$15K+) to run your marketing. SuperSymm delivers a one-time custom playbook for $497-$2,500 that <strong>you</strong> can execute or hand to whoever you hire next. No retainer, no contracts, no monthly burn. If you eventually want us to run it for you, we offer that as a partner engagement — but you're never required to upgrade.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">How long does it take?</h3>
+          <p class="faq-answer"><strong>Tier 1: 5-7 days. Tier 2: 7-10 days. Tier 3: 10-14 days.</strong> The clock starts when we receive your intake form. You'll get progress updates, and the final deliverable comes as a polished, navigable HTML document you can keep, share, and reference.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">What do you need from me to build it?</h3>
+          <p class="faq-answer">An intake form — about 15-20 minutes to complete. We ask about your business, your customers, your competitors, your current marketing efforts, your tech stack, and your capacity. That, plus our own analysis of your public surfaces, is what we build the playbook from.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">What industries do you work with?</h3>
+          <p class="faq-answer">We work with most service-based businesses, with deep expertise in financial advisors (RIAs), healthcare practices, tax and accounting firms, B2B software companies, and professional services. If you're in a regulated industry, we have compliance-aware playbooks for SEC, FINRA, HIPAA, and other frameworks.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">What's the difference between the three tiers?</h3>
+          <p class="faq-answer"><strong>Tier 1 ($497)</strong> is the analytical audit — what's working, what's not, and what to do about it, including SEO and AI search analysis. <strong>Tier 2 ($1,200)</strong> adds paid media strategy and social media analysis with channel-specific recommendations. <strong>Tier 3 ($2,500)</strong> adds a 90-day content calendar with ready-to-publish posts, email lifecycle sequences, and a compliance-ready workflow. Most DIY-oriented businesses pick Tier 3 because it eliminates the writing work entirely.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">What if I'm not happy with the result?</h3>
+          <p class="faq-answer">We'll iterate. Every playbook includes one revision round where you can ask for sections to be reworked, deepened, or refocused. If after that the deliverable still doesn't match what you needed, we'll refund the difference. We'd rather have happy customers than locked-in ones.</p>
+        </div>
+        <div class="faq-item">
+          <h3 class="faq-question">Can I see what a finished playbook looks like first?</h3>
+          <p class="faq-answer">Yes — we built a complete sample for a synthetic firm (Meridian Wealth Partners) so you can browse every section before purchasing. <a href="./meridian_playbook_sample.html" target="_blank" rel="noopener">Open the sample →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2 class="final-cta-title">Ready to build your <em>playbook?</em></h2>
+  <p class="final-cta-sub">15 minutes of intake. 5-14 days to delivery. Yours to keep.</p>
+  <a href="./Form_setup/supersymm_intake_form_v1.4.html" class="btn-primary">Start Your Playbook →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="page-wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <span class="brand-logo small">
+          <svg class="brand-logo-mark" viewBox="0 0 326 323" xmlns="http://www.w3.org/2000/svg" aria-label="SuperSymm">
+            <path d="M95.5825 94.5464L96.0825 1.54639H228.083L321.083 94.5464L255.083 161.546L229.747 189.366L229.583 189.546M96.0825 1.54639L162.583 68.0464L135.083 94.5464M228.083 1.54639V94.5464M321.083 94.5464H228.083M228.083 94.5464H190.583V133.046M69.5825 161.546L3.58252 95.5464L95.5825 94.5464M69.5825 161.546L95.5825 133.046M69.5825 161.546L4.08252 228.046H97.0825M69.5825 161.546L97.0825 188.046M95.5825 133.046H135.083M95.5825 133.046L123.083 161.546M95.5825 133.046V94.5464M135.083 133.046V94.5464M135.083 133.046V149.546M135.083 94.5464H95.5825M135.083 94.5464L162.583 121.046M97.0825 188.046L123.083 161.546M97.0825 188.046H135.083M97.0825 188.046V228.046M123.083 161.546L135.083 149.546M123.083 161.546L135.083 173.046M190.583 133.046H226.583L202.083 161.546M190.583 133.046V150.046M162.583 121.046L150.083 133.046H174.083L190.583 150.046M162.583 121.046L190.083 94.5464L163.583 69.0464M162.583 121.046L174.583 133.546M135.083 149.546V173.046M135.083 173.046V188.046M162.583 254.546L135.083 228.046V188.046M174.083 189.546H151.083L162.583 200.546M162.583 200.546L174.083 189.546L190.583 173.046M190.583 173.046V150.046M190.583 173.046V189.546M190.583 173.046V150.546L202.083 161.546M190.583 173.046L202.083 161.546M202.083 161.546L229.747 189.366M190.583 189.546H229.583M190.583 189.546V226.546M229.583 189.546V226.546L228.583 319.046L162.583 254.546M162.583 200.546L135.083 228.046M189.083 226.546L162.583 254.546M162.583 254.546L98.0825 319.046L97.0825 228.046M163.083 69.0464L228.083 2.04639M191.083 133.046H150.583M150.583 133.046H134.583M150.583 133.046L135.083 149.046V173.546L151.583 190.046M228.083 95.5425V133.248L321.083 225.046C320.887 174.083 321.278 146.01 321.083 95.0464M162.583 201.046L188.083 227.046H321.583L229.583 321.046H97.0825L3.08252 228.546V96.0464L95.5825 1.04639M98.0825 228.046H134.583"/>
+          </svg>
+          <span class="brand-logo-wordmark">supersym</span>
+        </span>
+      </div>
+      <div class="footer-tagline">Full-cycle digital marketing agency. Custom playbooks, built for your business.</div>
+      <a href="https://supersymm.com" class="footer-link">supersymm.com</a>
+    </div>
+    <div class="footer-meta">
+      © 2026 SuperSymm · All rights reserved
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
