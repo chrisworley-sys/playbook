@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Playbook Intake</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:           #EFE9DC;
+  --paper-soft:      #F4EFE3;
+  --paper-card:      #FAF6EC;
+  --paper-deep:      #E5DECC;
+  --rule:            #D6CDB8;
+  --rule-strong:     #A89F8A;
+  
+  --ink:             #1F1B14;
+  --ink-soft:        #3A342A;
+  --ink-mute:        #6B6253;
+  --ink-faint:       #968C7A;
+  --ink-placeholder: #B5AC97;
+  
+  --accent:          #3D2459;
+  --accent-soft:     #6B3A8A;
+  --accent-deep:     #2A1740;
+  --accent-tint:     rgba(61, 36, 89, 0.08);
+  /* Logo brand gradient — retained at full saturation for the logo only */
+  --brand-gradient-start: #22193B;
+  --brand-gradient-end:   #9B4A8B;
+  
+  --success:         #4A7C3F;
+  --success-tint:    rgba(74, 124, 63, 0.08);
+  --error:           #A8331C;
+  --error-tint:      rgba(168, 51, 28, 0.08);
+  
+  --r:  2px;
+  --rm: 4px;
+}
+
+* , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-bottom: 120px;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(61, 36, 89, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(31, 27, 20, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page { position: relative; z-index: 1; }
+
+/* ═══ HEADER ═══ */
+.header {
+  padding: 72px 48px 56px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.header-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.header-eyebrow strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.header-rule { flex: 1; height: 1px; background: var(--rule); }
+
+.header-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+
+h1.title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 64px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  color: var(--ink);
+  margin-bottom: 24px;
+  font-feature-settings: "ss01";
+}
+
+h1.title em { font-style: italic; font-weight: 300; color: var(--accent); }
+
+.header-sub {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin-bottom: 32px;
+  font-feature-settings: "ss01";
+}
+
+/* ═══ FULL LOGO (SVG mark + wordmark) ═══ */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-bottom: 32px;
+}
+
+.brand-logo-mark {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.brand-logo-mark path {
+  stroke: url(#brandGradient);
+  stroke-width: 3;
+  fill: none;
+}
+
+.brand-logo-wordmark {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--brand-gradient-start) 0%, var(--brand-gradient-end) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.autosave-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.04em;
+}
+
+.autosave-bar svg { width: 12px; height: 12px; color: var(--accent); }
+.autosave-bar #autosave-status { color: var(--accent); font-weight: 500; }
+
+.form-wrap { max-width: 980px; margin: 0 auto; padding: 0 48px; }
+
+.intro-note {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 24px 32px;
+  margin-bottom: 56px;
+  border-radius: 0 var(--r) var(--r) 0;
+}
+
+.intro-note p {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+.intro-note strong { color: var(--ink); font-weight: 500; }
+
+.section { margin-bottom: 72px; }
+
+.section-head {
+  margin-bottom: 36px;
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-num {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 80px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 0.85;
+  flex-shrink: 0;
+  font-feature-settings: "ss01";
+}
+
+.section-head-text { flex: 1; padding-bottom: 8px; }
+
+.section-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 15px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  max-width: 640px;
+}
+
+.section-body { padding-left: 4px; }
+
+.field { margin-bottom: 32px; }
+.field:last-child { margin-bottom: 0; }
+
+.field-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+}
+
+.field-label .required { color: var(--accent); margin-left: 6px; font-weight: 600; }
+.field-label .optional {
+  margin-left: 8px;
+  font-style: italic;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-faint);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.field-help {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink-mute);
+  margin-bottom: 14px;
+  line-height: 1.5;
+  max-width: 640px;
+}
+
+.field-help.below {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+  width: 100%;
+  padding: 18px 22px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: border-color 0.18s, background-color 0.18s;
+}
+
+input[type="text"]:hover, input[type="email"]:hover, input[type="url"]:hover,
+input[type="number"]:hover, input[type="tel"]:hover, textarea:hover, select:hover {
+  border-color: var(--rule-strong);
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus,
+input[type="number"]:focus, input[type="tel"]:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px var(--accent-tint);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--ink-placeholder);
+  font-style: italic;
+  font-weight: 300;
+}
+
+textarea { min-height: 120px; resize: vertical; padding: 18px 22px; line-height: 1.55; }
+
+select {
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23B84A2C' stroke-width='2.5'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 22px center;
+  padding-right: 56px;
+  cursor: pointer;
+}
+
+select option { background: var(--paper-card); color: var(--ink); font-size: 16px; padding: 12px; }
+
+.field-grid { display: grid; gap: 32px; }
+.field-grid-2 { grid-template-columns: 1fr 1fr; }
+.field-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.field-grid-tech { grid-template-columns: 1fr 1fr; gap: 28px; }
+
+@media (max-width: 760px) {
+  .field-grid-2, .field-grid-3, .field-grid-tech { grid-template-columns: 1fr; }
+}
+
+.color-input-wrap {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 8px 8px 8px 22px;
+  transition: border-color 0.18s, background-color 0.18s, box-shadow 0.18s;
+}
+
+.color-input-wrap:hover { border-color: var(--rule-strong); }
+
+.color-input-wrap:focus-within {
+  border-color: var(--accent);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px var(--accent-tint);
+}
+
+.color-input-wrap input[type="text"] {
+  background: transparent; border: none; flex: 1;
+  padding: 12px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.color-input-wrap input[type="text"]:focus { background: transparent; box-shadow: none; }
+
+.color-input-wrap input[type="color"] {
+  width: 46px; height: 46px;
+  border: none; border-radius: var(--r);
+  background: transparent; cursor: pointer; padding: 0;
+}
+
+.color-input-wrap input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; border-radius: var(--r); }
+.color-input-wrap input[type="color"]::-webkit-color-swatch { border: 1px solid var(--rule); border-radius: var(--r); }
+
+/* ═══ LOGO UPLOAD ═══ */
+.logo-drop-zone {
+  position: relative;
+  border: 2px dashed var(--rule);
+  border-radius: var(--rm);
+  background: var(--paper-card);
+  padding: 36px 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logo-drop-zone:hover {
+  border-color: var(--rule-strong);
+  background: var(--paper-soft);
+}
+
+.logo-drop-zone.dragging {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  border-style: solid;
+}
+
+.logo-drop-zone.has-file {
+  border-style: solid;
+  border-color: var(--success);
+  background: var(--success-tint);
+  text-align: left;
+  cursor: default;
+  padding: 22px 24px;
+}
+
+.logo-drop-zone.has-error {
+  border-color: var(--error);
+  background: var(--error-tint);
+}
+
+.logo-drop-zone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.logo-drop-zone.has-file input[type="file"] {
+  pointer-events: none;
+}
+
+/* Empty state */
+.logo-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-drop-zone.has-file .logo-empty { display: none; }
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--ink-mute);
+  opacity: 0.6;
+}
+
+.logo-drop-zone:hover .logo-icon { color: var(--accent); opacity: 1; }
+
+.logo-empty-primary {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.logo-empty-primary strong { color: var(--accent); font-weight: 500; }
+
+.logo-empty-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+
+/* Filled state */
+.logo-filled {
+  display: none;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-drop-zone.has-file .logo-filled { display: flex; }
+
+.logo-preview {
+  width: 56px;
+  height: 56px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.logo-preview img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.logo-preview-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--success);
+}
+
+.logo-info { flex: 1; min-width: 0; }
+
+.logo-filename {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+.logo-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-meta .dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--ink-faint);
+}
+
+.logo-clear {
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  color: var(--ink-mute);
+  padding: 8px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.logo-clear:hover {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.logo-error-msg {
+  display: none;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--error);
+  margin-top: 10px;
+}
+
+.logo-drop-zone.has-error + .logo-error-msg { display: block; }
+
+/* ═══ CHOICE PILLS ═══ */
+.choice-group { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.choice-pill { position: relative; cursor: pointer; }
+
+.choice-pill input[type="radio"],
+.choice-pill input[type="checkbox"] {
+  position: absolute; opacity: 0; pointer-events: none;
+}
+
+.choice-pill-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 20px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.choice-pill:hover .choice-pill-label {
+  border-color: var(--rule-strong);
+  color: var(--ink);
+}
+
+.choice-pill input[type="radio"]:checked + .choice-pill-label,
+.choice-pill input[type="checkbox"]:checked + .choice-pill-label {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+.choice-pill input[type="radio"]:focus-visible + .choice-pill-label,
+.choice-pill input[type="checkbox"]:focus-visible + .choice-pill-label {
+  outline: 2px solid var(--accent); outline-offset: 3px;
+}
+
+.choice-pill-check {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px;
+  border: 1.5px solid var(--ink-faint);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.18s;
+}
+
+.choice-pill input[type="radio"]:checked + .choice-pill-label .choice-pill-check,
+.choice-pill input[type="checkbox"]:checked + .choice-pill-label .choice-pill-check {
+  border-color: var(--paper); background: var(--accent); position: relative;
+}
+
+.choice-pill input[type="radio"]:checked + .choice-pill-label .choice-pill-check::after {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--paper);
+}
+
+.choice-pill input[type="checkbox"] + .choice-pill-label .choice-pill-check { border-radius: 3px; }
+
+.choice-pill input[type="checkbox"]:checked + .choice-pill-label .choice-pill-check {
+  border-radius: 3px; background: var(--accent); border-color: var(--paper);
+}
+
+.choice-pill input[type="checkbox"]:checked + .choice-pill-label .choice-pill-check::after {
+  content: '✓'; color: var(--paper); font-size: 11px; font-weight: 700; line-height: 1;
+}
+
+.industry-conditional {
+  display: none;
+  margin-top: 36px;
+  padding: 32px 32px 28px;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--rm);
+  position: relative;
+}
+
+.industry-conditional.active { display: block; animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.conditional-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+  width: 100%;
+}
+
+.conditional-label::before {
+  content: ''; width: 18px; height: 1px; background: var(--accent);
+}
+
+.tier-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+@media (max-width: 760px) { .tier-cards { grid-template-columns: 1fr; } }
+
+.tier-card { position: relative; cursor: pointer; }
+.tier-card input { position: absolute; opacity: 0; pointer-events: none; }
+
+.tier-card-body {
+  padding: 24px 24px 22px;
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--rm);
+  transition: all 0.18s;
+}
+
+.tier-card:hover .tier-card-body { border-color: var(--rule-strong); }
+
+.tier-card input:checked + .tier-card-body {
+  background: var(--ink); border-color: var(--ink);
+}
+
+.tier-card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.tier-card input:checked + .tier-card-body .tier-card-num { color: var(--accent-soft); }
+
+.tier-card-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.tier-card input:checked + .tier-card-body .tier-card-name { color: var(--paper); }
+
+.tier-card-desc { font-size: 13.5px; color: var(--ink-mute); line-height: 1.5; }
+
+.tier-card input:checked + .tier-card-body .tier-card-desc {
+  color: rgba(239, 233, 220, 0.75);
+}
+
+/* ═══ ACTIONS BAR ═══ */
+.actions-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(239, 233, 220, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--rule);
+  padding: 20px 48px;
+  z-index: 50;
+}
+
+.actions-inner {
+  max-width: 980px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px; flex-wrap: wrap;
+}
+
+.actions-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.06em;
+}
+
+.actions-status strong { color: var(--accent); font-weight: 600; }
+
+.actions-buttons { display: flex; gap: 10px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 26px;
+  border-radius: var(--r);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.18s;
+  border: 1px solid transparent;
+}
+
+.btn svg { width: 14px; height: 14px; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink-soft);
+  border-color: var(--rule-strong);
+}
+
+.btn-secondary:hover {
+  background: var(--paper-card);
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.btn-primary {
+  background: var(--ink); color: var(--paper); border-color: var(--ink);
+}
+
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+
+.btn-primary:disabled {
+  background: var(--ink-faint); border-color: var(--ink-faint); cursor: wait;
+}
+
+.btn:disabled { opacity: 0.5; }
+
+/* ═══ MODAL ═══ */
+.modal-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(31, 27, 20, 0.55);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  align-items: flex-start; justify-content: center;
+  padding: 48px 24px;
+  overflow-y: auto;
+}
+
+.modal-backdrop.open { display: flex; }
+
+.modal {
+  background: var(--paper-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--rm);
+  max-width: 720px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(31, 27, 20, 0.18);
+}
+
+.modal-state { display: none; }
+.modal-state.active { display: block; }
+
+.state-submitting { padding: 56px 48px; text-align: center; }
+
+.spinner {
+  width: 56px; height: 56px;
+  border: 3px solid var(--rule);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  margin: 0 auto 28px;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.state-submitting-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.state-submitting-text {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ink-mute);
+  line-height: 1.5;
+}
+
+.state-success { padding: 0; }
+
+.success-head {
+  padding: 48px 48px 32px;
+  text-align: center;
+  background: var(--paper-soft);
+  border-bottom: 1px solid var(--rule);
+}
+
+.success-check {
+  width: 64px; height: 64px;
+  margin: 0 auto 24px;
+  background: var(--success);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+.success-check svg { width: 32px; height: 32px; color: var(--paper); }
+
+.success-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.success-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+
+.success-sub {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.success-body { padding: 32px 48px 28px; }
+
+.success-receipt {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  padding: 22px 26px;
+  margin-bottom: 28px;
+}
+
+.success-receipt-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+
+.success-receipt-rows { display: grid; gap: 10px; }
+
+.success-receipt-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  font-size: 14px;
+  align-items: baseline;
+}
+
+.success-receipt-row dt {
+  color: var(--ink-mute);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.success-receipt-row dd { color: var(--ink); font-weight: 500; word-break: break-word; }
+
+.success-next {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 15.5px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  padding: 0 0 4px;
+}
+
+.success-next strong { color: var(--ink); font-weight: 500; }
+
+.success-foot {
+  padding: 22px 48px 32px;
+  border-top: 1px solid var(--rule);
+  display: flex; gap: 12px; justify-content: space-between; flex-wrap: wrap;
+  align-items: center;
+}
+
+.success-foot-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+}
+
+.success-foot-buttons { display: flex; gap: 10px; }
+
+.state-error { padding: 0; }
+
+.error-head {
+  padding: 40px 48px 28px;
+  text-align: center;
+  background: var(--paper-soft);
+  border-bottom: 1px solid var(--rule);
+}
+
+.error-icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 20px;
+  background: var(--error);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.error-icon svg { width: 28px; height: 28px; color: var(--paper); }
+
+.error-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.error-sub {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+.error-body { padding: 28px 48px; }
+
+.error-detail {
+  background: var(--error-tint);
+  border: 1px solid rgba(168, 51, 28, 0.20);
+  border-radius: var(--r);
+  padding: 16px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  color: var(--error);
+  line-height: 1.55;
+  margin-bottom: 20px;
+  word-break: break-word;
+}
+
+.error-fallback {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 15.5px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.error-foot {
+  padding: 22px 48px 32px;
+  border-top: 1px solid var(--rule);
+  display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap;
+}
+
+.copy-btn.copied {
+  background: var(--success); color: var(--paper); border-color: var(--success);
+}
+
+.btn-error {
+  background: var(--error); color: var(--paper); border-color: var(--error);
+}
+
+.btn-error:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+
+.footer {
+  max-width: 980px;
+  margin: 80px auto 0;
+  padding: 32px 48px;
+  border-top: 1px solid var(--rule);
+}
+
+.footer-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+
+.footer-text strong { color: var(--ink-mute); font-weight: 500; }
+
+@media (max-width: 760px) {
+  .header { padding: 48px 24px 36px; }
+  .form-wrap { padding: 0 24px; }
+  .footer { padding: 28px 24px; }
+  h1.title { font-size: 42px; }
+  .header-sub { font-size: 18px; }
+  .section-head { gap: 20px; }
+  .section-num { font-size: 54px; }
+  .section-name { font-size: 26px; }
+  .intro-note { padding: 20px 22px; }
+  .intro-note p { font-size: 15px; }
+  .actions-bar { padding: 16px 24px; }
+  .actions-inner { flex-direction: column; gap: 12px; align-items: stretch; }
+  .actions-status { text-align: center; }
+  .actions-buttons { justify-content: stretch; }
+  .actions-buttons .btn { flex: 1; justify-content: center; }
+  .success-head, .error-head { padding: 36px 28px 24px; }
+  .success-body, .error-body { padding: 24px 28px; }
+  .success-foot, .error-foot { padding: 20px 28px 26px; flex-direction: column; align-items: stretch; }
+  .success-foot-buttons { flex-direction: column; }
+  .success-foot-buttons .btn, .error-foot .btn { width: 100%; justify-content: center; }
+  .success-title { font-size: 28px; }
+  .error-title { font-size: 24px; }
+  .state-submitting { padding: 44px 28px; }
+  .industry-conditional { padding: 24px 20px 22px; }
+  
+  input[type="text"], input[type="email"], input[type="url"],
+  input[type="number"], input[type="tel"], textarea, select {
+    padding: 15px 18px; font-size: 16px;
+  }
+  
+  .logo-drop-zone { padding: 28px 20px; }
+  .logo-drop-zone.has-file { padding: 18px 18px; }
+  .logo-filled { gap: 12px; }
+  .logo-preview { width: 48px; height: 48px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Logo gradient (defined once, referenced by logo instances) -->
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <linearGradient id="brandGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#22193B"/>
+      <stop offset="100%" stop-color="#E977C1"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="page">
+
+<header class="header">
+  <a href="https://supersymm.com" class="brand-logo" aria-label="SuperSymm — return to homepage">
+    <svg class="brand-logo-mark" viewBox="0 0 326 323" xmlns="http://www.w3.org/2000/svg">
+      <path d="M95.5825 94.5464L96.0825 1.54639H228.083L321.083 94.5464L255.083 161.546L229.747 189.366L229.583 189.546M96.0825 1.54639L162.583 68.0464L135.083 94.5464M228.083 1.54639V94.5464M321.083 94.5464H228.083M228.083 94.5464H190.583V133.046M69.5825 161.546L3.58252 95.5464L95.5825 94.5464M69.5825 161.546L95.5825 133.046M69.5825 161.546L4.08252 228.046H97.0825M69.5825 161.546L97.0825 188.046M95.5825 133.046H135.083M95.5825 133.046L123.083 161.546M95.5825 133.046V94.5464M135.083 133.046V94.5464M135.083 133.046V149.546M135.083 94.5464H95.5825M135.083 94.5464L162.583 121.046M97.0825 188.046L123.083 161.546M97.0825 188.046H135.083M97.0825 188.046V228.046M123.083 161.546L135.083 149.546M123.083 161.546L135.083 173.046M190.583 133.046H226.583L202.083 161.546M190.583 133.046V150.046M162.583 121.046L150.083 133.046H174.083L190.583 150.046M162.583 121.046L190.083 94.5464L163.583 69.0464M162.583 121.046L174.583 133.546M135.083 149.546V173.046M135.083 173.046V188.046M162.583 254.546L135.083 228.046V188.046M174.083 189.546H151.083L162.583 200.546M162.583 200.546L174.083 189.546L190.583 173.046M190.583 173.046V150.046M190.583 173.046V189.546M190.583 173.046V150.546L202.083 161.546M190.583 173.046L202.083 161.546M202.083 161.546L229.747 189.366M190.583 189.546H229.583M190.583 189.546V226.546M229.583 189.546V226.546L228.583 319.046L162.583 254.546M162.583 200.546L135.083 228.046M189.083 226.546L162.583 254.546M162.583 254.546L98.0825 319.046L97.0825 228.046M163.083 69.0464L228.083 2.04639M191.083 133.046H150.583M150.583 133.046H134.583M150.583 133.046L135.083 149.046V173.546L151.583 190.046M228.083 95.5425V133.248L321.083 225.046C320.887 174.083 321.278 146.01 321.083 95.0464M162.583 201.046L188.083 227.046H321.583L229.583 321.046H97.0825L3.08252 228.546V96.0464L95.5825 1.04639M98.0825 228.046H134.583"/>
+    </svg>
+    <span class="brand-logo-wordmark">supersym</span>
+  </a>
+  <div class="header-meta">
+    <div class="header-eyebrow"><strong>Marketing Playbook</strong> · Client Intake</div>
+    <div class="header-rule"></div>
+    <div class="header-date" id="header-date"></div>
+  </div>
+  <h1 class="title">A complete intake for<br>a playbook built around <em>your firm.</em></h1>
+  <p class="header-sub">This form gathers the context an audit needs to produce recommendations specific to your industry, audience, capacity, and tools — rather than generic best practices. Allow fifteen to twenty-five minutes; progress saves automatically.</p>
+  <div class="autosave-bar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    Autosave <span id="autosave-status">ready</span>
+  </div>
+</header>
+
+<div class="form-wrap">
+
+  <div class="intro-note">
+    <p><strong>One field shapes the rest.</strong> The industry selector in Section 1 reveals industry-specific questions and routes the audit to the regulatory environment, audience patterns, and channel mix that match your business.</p>
+  </div>
+
+  <!-- ═══ SECTION 1: FIRM IDENTITY ═══ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">I</div>
+      <div class="section-head-text">
+        <div class="section-name">Firm Identity</div>
+        <div class="section-desc">Basic identity, industry classification, and scale. The industry selector determines what additional questions appear below.</div>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <div class="field">
+        <label class="field-label" for="firm_legal_name">Firm legal name <span class="required">*</span></label>
+        <input type="text" id="firm_legal_name" placeholder="e.g., Meridian Wealth Partners, LLC">
+      </div>
+
+      <div class="field-grid field-grid-2">
+        <div class="field">
+          <label class="field-label" for="firm_dba">DBA (if different)</label>
+          <input type="text" id="firm_dba" placeholder="e.g., Meridian Wealth">
+        </div>
+        <div class="field">
+          <label class="field-label" for="firm_short_name">Firm short name <span class="required">*</span></label>
+          <input type="text" id="firm_short_name" placeholder="meridian">
+          <p class="field-help below">Lowercase, no spaces. Used for output filenames.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Industry <span class="required">*</span></label>
+        <p class="field-help">Select the primary industry your firm operates in. This determines which industry-specific module the audit loads.</p>
+        <div class="choice-group" id="industry-group">
+          <label class="choice-pill"><input type="radio" name="industry" value="ria" data-conditional="industry-conditional-ria"><span class="choice-pill-label"><span class="choice-pill-check"></span>RIA / Financial Advisor</span></label>
+          <label class="choice-pill"><input type="radio" name="industry" value="healthcare" data-conditional="industry-conditional-healthcare"><span class="choice-pill-label"><span class="choice-pill-check"></span>Healthcare Practice</span></label>
+          <label class="choice-pill"><input type="radio" name="industry" value="tax_financial" data-conditional="industry-conditional-tax"><span class="choice-pill-label"><span class="choice-pill-check"></span>Tax &amp; Financial</span></label>
+          <label class="choice-pill"><input type="radio" name="industry" value="tech_solutions" data-conditional="industry-conditional-tech"><span class="choice-pill-label"><span class="choice-pill-check"></span>Tech Solutions</span></label>
+          <label class="choice-pill"><input type="radio" name="industry" value="other" data-conditional="industry-conditional-other"><span class="choice-pill-label"><span class="choice-pill-check"></span>Other</span></label>
+        </div>
+      </div>
+
+      <!-- CONDITIONAL: RIA -->
+      <div class="industry-conditional" id="industry-conditional-ria">
+        <div class="conditional-label">RIA-specific questions</div>
+        <div class="field">
+          <label class="field-label">Firm structure</label>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="radio" name="ria_structure" value="solo"><span class="choice-pill-label"><span class="choice-pill-check"></span>Solo practitioner</span></label>
+            <label class="choice-pill"><input type="radio" name="ria_structure" value="small_partnership"><span class="choice-pill-label"><span class="choice-pill-check"></span>Small partnership (2-5)</span></label>
+            <label class="choice-pill"><input type="radio" name="ria_structure" value="mid_size"><span class="choice-pill-label"><span class="choice-pill-check"></span>Mid-size (6-25)</span></label>
+            <label class="choice-pill"><input type="radio" name="ria_structure" value="large"><span class="choice-pill-label"><span class="choice-pill-check"></span>Large (25+)</span></label>
+            <label class="choice-pill"><input type="radio" name="ria_structure" value="ibd_affiliated"><span class="choice-pill-label"><span class="choice-pill-check"></span>IBD / Broker-dealer affiliated</span></label>
+            <label class="choice-pill"><input type="radio" name="ria_structure" value="aggregator"><span class="choice-pill-label"><span class="choice-pill-check"></span>RIA aggregator network</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="ria_ibd_name">If IBD or aggregator affiliated, which one?</label>
+          <input type="text" id="ria_ibd_name" placeholder="e.g., LPL Financial, Cetera, Hightower, Focus Financial">
+        </div>
+        <div class="field">
+          <label class="field-label">Primary service line emphasis</label>
+          <p class="field-help">Where does most revenue or client time come from? Select all that apply.</p>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="checkbox" name="ria_services" value="investment_management"><span class="choice-pill-label"><span class="choice-pill-check"></span>Investment management</span></label>
+            <label class="choice-pill"><input type="checkbox" name="ria_services" value="financial_planning"><span class="choice-pill-label"><span class="choice-pill-check"></span>Financial planning</span></label>
+            <label class="choice-pill"><input type="checkbox" name="ria_services" value="retirement_income"><span class="choice-pill-label"><span class="choice-pill-check"></span>Retirement income planning</span></label>
+            <label class="choice-pill"><input type="checkbox" name="ria_services" value="tax_planning"><span class="choice-pill-label"><span class="choice-pill-check"></span>Tax planning advisory</span></label>
+            <label class="choice-pill"><input type="checkbox" name="ria_services" value="estate_planning"><span class="choice-pill-label"><span class="choice-pill-check"></span>Estate planning coordination</span></label>
+            <label class="choice-pill"><input type="checkbox" name="ria_services" value="insurance"><span class="choice-pill-label"><span class="choice-pill-check"></span>Insurance (term/whole life)</span></label>
+            <label class="choice-pill"><input type="checkbox" name="ria_services" value="annuities"><span class="choice-pill-label"><span class="choice-pill-check"></span>Annuities</span></label>
+            <label class="choice-pill"><input type="checkbox" name="ria_services" value="ltc"><span class="choice-pill-label"><span class="choice-pill-check"></span>LTC / hybrid products</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Seminar / webinar marketing program</label>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="radio" name="ria_seminars" value="active_strong"><span class="choice-pill-label"><span class="choice-pill-check"></span>Active &amp; high-volume</span></label>
+            <label class="choice-pill"><input type="radio" name="ria_seminars" value="active_low"><span class="choice-pill-label"><span class="choice-pill-check"></span>Active but ad-hoc</span></label>
+            <label class="choice-pill"><input type="radio" name="ria_seminars" value="planned"><span class="choice-pill-label"><span class="choice-pill-check"></span>Planning to start</span></label>
+            <label class="choice-pill"><input type="radio" name="ria_seminars" value="not_relevant"><span class="choice-pill-label"><span class="choice-pill-check"></span>Not relevant / not interested</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONDITIONAL: HEALTHCARE -->
+      <div class="industry-conditional" id="industry-conditional-healthcare">
+        <div class="conditional-label">Healthcare-specific questions</div>
+        <div class="field">
+          <label class="field-label" for="hc_specialty">Specialty</label>
+          <select id="hc_specialty">
+            <option value="">— Select specialty —</option>
+            <option value="orthopedic">Orthopedic / Sports Medicine</option>
+            <option value="spine">Spine / Neurosurgery</option>
+            <option value="dermatology_medical">Dermatology (medical)</option>
+            <option value="dermatology_cosmetic">Dermatology (cosmetic)</option>
+            <option value="dermatology_both">Dermatology (medical + cosmetic)</option>
+            <option value="plastic_surgery">Plastic Surgery</option>
+            <option value="dental_general">Dental (general)</option>
+            <option value="dental_cosmetic">Dental (cosmetic / Invisalign / veneers)</option>
+            <option value="fertility">Fertility / Reproductive</option>
+            <option value="pain_management">Pain Management</option>
+            <option value="integrative">Integrative / Functional Medicine</option>
+            <option value="cardiology">Cardiology</option>
+            <option value="other_specialty">Other specialty</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label" for="hc_other_specialty">If "Other specialty," please describe</label>
+          <input type="text" id="hc_other_specialty" placeholder="e.g., ENT / otolaryngology">
+        </div>
+        <div class="field">
+          <label class="field-label">Payment model</label>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="radio" name="hc_payment" value="insurance_primary"><span class="choice-pill-label"><span class="choice-pill-check"></span>Insurance-based primary</span></label>
+            <label class="choice-pill"><input type="radio" name="hc_payment" value="self_pay_primary"><span class="choice-pill-label"><span class="choice-pill-check"></span>Self-pay primary</span></label>
+            <label class="choice-pill"><input type="radio" name="hc_payment" value="mixed"><span class="choice-pill-label"><span class="choice-pill-check"></span>Mixed insurance + self-pay</span></label>
+            <label class="choice-pill"><input type="radio" name="hc_payment" value="concierge"><span class="choice-pill-label"><span class="choice-pill-check"></span>Concierge / membership</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Second opinion business</label>
+          <p class="field-help">Do you accept patients seeking a second opinion before a procedure recommended elsewhere?</p>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="radio" name="hc_second_opinion" value="yes_significant"><span class="choice-pill-label"><span class="choice-pill-check"></span>Yes, significant part of practice</span></label>
+            <label class="choice-pill"><input type="radio" name="hc_second_opinion" value="yes_some"><span class="choice-pill-label"><span class="choice-pill-check"></span>Yes, some volume</span></label>
+            <label class="choice-pill"><input type="radio" name="hc_second_opinion" value="rarely"><span class="choice-pill-label"><span class="choice-pill-check"></span>Rarely / not actively pursued</span></label>
+            <label class="choice-pill"><input type="radio" name="hc_second_opinion" value="no"><span class="choice-pill-label"><span class="choice-pill-check"></span>No</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="hc_procedures">Key procedures or conditions you treat</label>
+          <textarea id="hc_procedures" placeholder="e.g., spinal fusion, disc replacement, scoliosis correction, chronic back pain..."></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label" for="hc_insurance">Major insurance carriers accepted</label>
+          <input type="text" id="hc_insurance" placeholder="e.g., BCBS, UnitedHealthcare, Aetna, Cigna, Medicare">
+        </div>
+      </div>
+
+      <!-- CONDITIONAL: TAX -->
+      <div class="industry-conditional" id="industry-conditional-tax">
+        <div class="conditional-label">Tax &amp; Financial-specific questions</div>
+        <div class="field">
+          <label class="field-label">Service type primary</label>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="radio" name="tax_service" value="annual_b2c"><span class="choice-pill-label"><span class="choice-pill-check"></span>Annual tax prep (B2C)</span></label>
+            <label class="choice-pill"><input type="radio" name="tax_service" value="annual_b2b"><span class="choice-pill-label"><span class="choice-pill-check"></span>Annual tax prep (B2B small business)</span></label>
+            <label class="choice-pill"><input type="radio" name="tax_service" value="planning"><span class="choice-pill-label"><span class="choice-pill-check"></span>Tax planning advisory</span></label>
+            <label class="choice-pill"><input type="radio" name="tax_service" value="bookkeeping"><span class="choice-pill-label"><span class="choice-pill-check"></span>Bookkeeping</span></label>
+            <label class="choice-pill"><input type="radio" name="tax_service" value="fractional_cfo"><span class="choice-pill-label"><span class="choice-pill-check"></span>Fractional CFO</span></label>
+            <label class="choice-pill"><input type="radio" name="tax_service" value="resolution"><span class="choice-pill-label"><span class="choice-pill-check"></span>Tax resolution (IRS problems)</span></label>
+            <label class="choice-pill"><input type="radio" name="tax_service" value="estate"><span class="choice-pill-label"><span class="choice-pill-check"></span>Estate planning tax</span></label>
+            <label class="choice-pill"><input type="radio" name="tax_service" value="mixed"><span class="choice-pill-label"><span class="choice-pill-check"></span>Mixed services</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="tax_niche">Industry / niche specialization (if any)</label>
+          <input type="text" id="tax_niche" placeholder="e.g., real estate investors, physicians, restaurant owners, tech professionals">
+        </div>
+        <div class="field">
+          <label class="field-label">Credentials held</label>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="checkbox" name="tax_credentials" value="cpa"><span class="choice-pill-label"><span class="choice-pill-check"></span>CPA</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tax_credentials" value="ea"><span class="choice-pill-label"><span class="choice-pill-check"></span>EA (Enrolled Agent)</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tax_credentials" value="tax_attorney"><span class="choice-pill-label"><span class="choice-pill-check"></span>Tax Attorney</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tax_credentials" value="cfp"><span class="choice-pill-label"><span class="choice-pill-check"></span>CFP®</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tax_credentials" value="quickbooks"><span class="choice-pill-label"><span class="choice-pill-check"></span>QuickBooks ProAdvisor</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONDITIONAL: TECH -->
+      <div class="industry-conditional" id="industry-conditional-tech">
+        <div class="conditional-label">Tech Solutions-specific questions</div>
+        <div class="field">
+          <label class="field-label">Subcategory</label>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="radio" name="tech_subcat" value="saas_mid_enterprise"><span class="choice-pill-label"><span class="choice-pill-check"></span>B2B SaaS (mid-market / enterprise)</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_subcat" value="saas_plg"><span class="choice-pill-label"><span class="choice-pill-check"></span>B2B SaaS (PLG / lower-ticket)</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_subcat" value="msp"><span class="choice-pill-label"><span class="choice-pill-check"></span>IT Services / MSP</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_subcat" value="cybersecurity"><span class="choice-pill-label"><span class="choice-pill-check"></span>Cybersecurity firm</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_subcat" value="dev_agency"><span class="choice-pill-label"><span class="choice-pill-check"></span>Software dev agency</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_subcat" value="ai_ml"><span class="choice-pill-label"><span class="choice-pill-check"></span>AI / ML services</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_subcat" value="cloud"><span class="choice-pill-label"><span class="choice-pill-check"></span>DevOps / Cloud consulting</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_subcat" value="devtools"><span class="choice-pill-label"><span class="choice-pill-check"></span>DevTools / Infrastructure SaaS</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Primary conversion path</label>
+          <p class="field-help">What's the main conversion goal? What does success look like?</p>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="radio" name="tech_conversion" value="demo"><span class="choice-pill-label"><span class="choice-pill-check"></span>Demo request</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_conversion" value="trial"><span class="choice-pill-label"><span class="choice-pill-check"></span>Free trial signup</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_conversion" value="discovery_call"><span class="choice-pill-label"><span class="choice-pill-check"></span>Discovery / sales call</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_conversion" value="self_serve"><span class="choice-pill-label"><span class="choice-pill-check"></span>Self-serve signup</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_conversion" value="assessment"><span class="choice-pill-label"><span class="choice-pill-check"></span>Assessment / audit</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Target market segment</label>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="radio" name="tech_segment" value="smb"><span class="choice-pill-label"><span class="choice-pill-check"></span>SMB</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_segment" value="mid_market"><span class="choice-pill-label"><span class="choice-pill-check"></span>Mid-market</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_segment" value="enterprise"><span class="choice-pill-label"><span class="choice-pill-check"></span>Enterprise</span></label>
+            <label class="choice-pill"><input type="radio" name="tech_segment" value="mixed"><span class="choice-pill-label"><span class="choice-pill-check"></span>Mixed</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Compliance certifications</label>
+          <div class="choice-group">
+            <label class="choice-pill"><input type="checkbox" name="tech_compliance" value="soc2"><span class="choice-pill-label"><span class="choice-pill-check"></span>SOC 2</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tech_compliance" value="iso27001"><span class="choice-pill-label"><span class="choice-pill-check"></span>ISO 27001</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tech_compliance" value="hipaa"><span class="choice-pill-label"><span class="choice-pill-check"></span>HIPAA</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tech_compliance" value="pci"><span class="choice-pill-label"><span class="choice-pill-check"></span>PCI DSS</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tech_compliance" value="fedramp"><span class="choice-pill-label"><span class="choice-pill-check"></span>FedRAMP</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tech_compliance" value="gdpr"><span class="choice-pill-label"><span class="choice-pill-check"></span>GDPR</span></label>
+            <label class="choice-pill"><input type="checkbox" name="tech_compliance" value="ccpa"><span class="choice-pill-label"><span class="choice-pill-check"></span>CCPA</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONDITIONAL: OTHER -->
+      <div class="industry-conditional" id="industry-conditional-other">
+        <div class="conditional-label">Industry details</div>
+        <div class="field">
+          <label class="field-label" for="other_industry_desc">Describe your industry / business</label>
+          <textarea id="other_industry_desc" placeholder="What industry are you in? What do you sell? Who do you serve?"></textarea>
+          <p class="field-help below">If your industry isn't yet supported with a dedicated module, the audit will be more general.</p>
+        </div>
+      </div>
+
+      <div class="field-grid field-grid-2" style="margin-top: 32px;">
+        <div class="field">
+          <label class="field-label" for="firm_city">Headquarters city &amp; state <span class="required">*</span></label>
+          <input type="text" id="firm_city" placeholder="e.g., Austin, TX">
+        </div>
+        <div class="field">
+          <label class="field-label" for="firm_service_area">Service area</label>
+          <input type="text" id="firm_service_area" placeholder="e.g., Texas + virtual nationwide">
+        </div>
+      </div>
+
+      <div class="field-grid field-grid-3">
+        <div class="field">
+          <label class="field-label" for="firm_scale_metric">Scale metric <span class="required">*</span></label>
+          <input type="text" id="firm_scale_metric" placeholder="$250M AUM, $3M revenue, 5K patients">
+          <p class="field-help below">Industry-appropriate scale: AUM for RIA, revenue/ARR for tech, patient volume for healthcare.</p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="firm_years">Years in business</label>
+          <input type="number" id="firm_years" placeholder="e.g., 12" min="0">
+        </div>
+        <div class="field">
+          <label class="field-label" for="firm_team_size">Team size</label>
+          <input type="number" id="firm_team_size" placeholder="e.g., 8" min="1">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="firm_principals">Principal(s) name(s) and role(s) <span class="required">*</span></label>
+        <textarea id="firm_principals" placeholder="e.g., Sarah Chen, Founder &amp; CEO; Marcus Rivera, Co-Founder &amp; CTO"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: BRANDING ═══ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">II</div>
+      <div class="section-head-text">
+        <div class="section-name">Branding</div>
+        <div class="section-desc">Brand colors, logo, and voice — used to style the final HTML playbook deliverable.</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-grid field-grid-2">
+        <div class="field">
+          <label class="field-label">Primary brand color <span class="required">*</span></label>
+          <div class="color-input-wrap">
+            <input type="text" id="brand_primary_color" placeholder="#22193B" maxlength="7">
+            <input type="color" id="brand_primary_color_picker" value="#22193B">
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Secondary / accent brand color</label>
+          <div class="color-input-wrap">
+            <input type="text" id="brand_secondary_color" placeholder="#D5F77C" maxlength="7">
+            <input type="color" id="brand_secondary_color_picker" value="#D5F77C">
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Background tone preference</label>
+        <div class="choice-group">
+          <label class="choice-pill"><input type="radio" name="brand_tone" value="light"><span class="choice-pill-label"><span class="choice-pill-check"></span>Light</span></label>
+          <label class="choice-pill"><input type="radio" name="brand_tone" value="ivory"><span class="choice-pill-label"><span class="choice-pill-check"></span>Ivory / Warm</span></label>
+          <label class="choice-pill"><input type="radio" name="brand_tone" value="dark"><span class="choice-pill-label"><span class="choice-pill-check"></span>Dark</span></label>
+          <label class="choice-pill"><input type="radio" name="brand_tone" value="neutral"><span class="choice-pill-label"><span class="choice-pill-check"></span>Neutral / agency picks</span></label>
+        </div>
+      </div>
+      
+      <!-- LOGO UPLOAD FIELD -->
+      <div class="field">
+        <label class="field-label">Logo <span class="optional">— optional</span></label>
+        <p class="field-help">Upload your logo to use on the final playbook deliverable. SVG preferred (scales crisply); PNG, JPG, and PDF also work. If you don't have a finalized logo yet, skip this — we can work without.</p>
+        <div class="logo-drop-zone" id="logo-drop-zone">
+          <input type="file" id="logo_input" accept=".svg,.png,.jpg,.jpeg,.pdf,image/svg+xml,image/png,image/jpeg,application/pdf">
+          <div class="logo-empty">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <div class="logo-empty-primary"><strong>Drop your logo here</strong> or click to browse</div>
+            <div class="logo-empty-meta">SVG · PNG · JPG · PDF · up to 5 MB</div>
+          </div>
+          <div class="logo-filled">
+            <div class="logo-preview" id="logo-preview">
+              <svg class="logo-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+            </div>
+            <div class="logo-info">
+              <div class="logo-filename" id="logo-filename">filename.svg</div>
+              <div class="logo-meta">
+                <span id="logo-type">SVG</span>
+                <span class="dot"></span>
+                <span id="logo-size">12 KB</span>
+              </div>
+            </div>
+            <button type="button" class="logo-clear" id="logo-clear">Remove</button>
+          </div>
+        </div>
+        <p class="logo-error-msg" id="logo-error-msg">An error occurred.</p>
+      </div>
+      
+      <div class="field">
+        <label class="field-label" for="brand_tagline">Tagline or positioning statement</label>
+        <input type="text" id="brand_tagline" placeholder="e.g., Independent wealth management for tech professionals">
+      </div>
+      <div class="field">
+        <label class="field-label" for="brand_voice">Brand voice notes (optional)</label>
+        <textarea id="brand_voice" placeholder="e.g., approachable but authoritative; avoid corporate jargon; we like specific scenarios over abstract framing"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: TECH STACK ═══ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">III</div>
+      <div class="section-head-text">
+        <div class="section-name">Tech Stack</div>
+        <div class="section-desc">What tools do you currently use, across ten categories? "None" and "unknown" are legitimate values — please don't guess if you're not sure.</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-grid field-grid-tech">
+        <div class="field"><label class="field-label" for="tech_website">01 — Website platform</label><input type="text" id="tech_website" placeholder="WordPress, Webflow, Squarespace, none"></div>
+        <div class="field"><label class="field-label" for="tech_crm">02 — CRM</label><input type="text" id="tech_crm" placeholder="Wealthbox, HubSpot, Salesforce, none"></div>
+      </div>
+      <div class="field-grid field-grid-tech">
+        <div class="field"><label class="field-label" for="tech_email">03 — Email marketing tool</label><input type="text" id="tech_email" placeholder="Mailchimp, ActiveCampaign, MailerLite"></div>
+        <div class="field"><label class="field-label" for="tech_scheduling">04 — Scheduling tool</label><input type="text" id="tech_scheduling" placeholder="Calendly, SavvyCal, ZocDoc, native EHR"></div>
+      </div>
+      <div class="field-grid field-grid-tech">
+        <div class="field"><label class="field-label" for="tech_analytics">05 — Analytics</label><input type="text" id="tech_analytics" placeholder="GA4, Plausible, Mixpanel, none"></div>
+        <div class="field"><label class="field-label" for="tech_social">06 — Social scheduling</label><input type="text" id="tech_social" placeholder="Buffer, Hootsuite, native, none"></div>
+      </div>
+      <div class="field-grid field-grid-tech">
+        <div class="field"><label class="field-label" for="tech_forms">07 — Lead capture forms</label><input type="text" id="tech_forms" placeholder="Website builder, Typeform, HubSpot forms"></div>
+        <div class="field"><label class="field-label" for="tech_automation">08 — Automation connector</label><input type="text" id="tech_automation" placeholder="Zapier, Make, native integrations, none"></div>
+      </div>
+      <div class="field-grid field-grid-tech">
+        <div class="field"><label class="field-label" for="tech_compliance">09 — Compliance review tool / process</label><input type="text" id="tech_compliance" placeholder="RIA in a Box, manual CCO review, IBD platform"></div>
+        <div class="field"><label class="field-label" for="tech_other">10 — Other notable tools</label><input type="text" id="tech_other" placeholder="EHR, practice mgmt, tax software, etc."></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: AUDIT CONTEXT ═══ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">IV</div>
+      <div class="section-head-text">
+        <div class="section-name">Audit Context</div>
+        <div class="section-desc">Tier requested, goals, capacity, and what you specifically need from this playbook.</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label class="field-label">Audit tier requested <span class="required">*</span></label>
+        <div class="tier-cards">
+          <label class="tier-card">
+            <input type="radio" name="audit_tier" value="1">
+            <div class="tier-card-body">
+              <div class="tier-card-num">Tier 1</div>
+              <div class="tier-card-name">Marketing Audit</div>
+              <div class="tier-card-desc">Analytical audit + Activation Plan. Eight sections.</div>
+            </div>
+          </label>
+          <label class="tier-card">
+            <input type="radio" name="audit_tier" value="2">
+            <div class="tier-card-body">
+              <div class="tier-card-num">Tier 2</div>
+              <div class="tier-card-name">Audit + Channels</div>
+              <div class="tier-card-desc">Tier 1 + Paid Media + Social. Ten sections.</div>
+            </div>
+          </label>
+          <label class="tier-card">
+            <input type="radio" name="audit_tier" value="3">
+            <div class="tier-card-body">
+              <div class="tier-card-num">Tier 3</div>
+              <div class="tier-card-name">Full Campaign Kit</div>
+              <div class="tier-card-desc">Tier 2 + Content Production + Email &amp; Lifecycle. Thirteen sections.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="audit_target_personas">Target client / persona focus</label>
+        <textarea id="audit_target_personas" placeholder="Who specifically do you want this playbook to help you reach? e.g., 'Tech professionals with RSU/equity comp in the Bay Area' or 'Spine surgery patients in the DFW metro'"></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label" for="audit_goals">Specific goals for this playbook <span class="required">*</span></label>
+        <textarea id="audit_goals" placeholder="What outcomes do you want? e.g., 'Increase qualified consultations by 30% within 6 months,' 'Establish thought leadership in our niche,' 'Build the foundation for a content program that compounds'"></textarea>
+      </div>
+      <div class="field-grid field-grid-2">
+        <div class="field">
+          <label class="field-label" for="audit_hours">Capacity for marketing (hours/week) <span class="required">*</span></label>
+          <input type="number" id="audit_hours" placeholder="e.g., 4" min="0" max="80">
+          <p class="field-help below">Realistic, not aspirational. Typical for independent professional services firms: 4-6 hours/week from principal plus admin support.</p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="audit_budget">Estimated marketing budget (monthly)</label>
+          <input type="text" id="audit_budget" placeholder="e.g., $2,500/mo or 'TBD'">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="audit_pain_points">Existing marketing pain points or concerns</label>
+        <textarea id="audit_pain_points" placeholder="What's frustrating about your current marketing? What have you tried that hasn't worked? What feels broken?"></textarea>
+      </div>
+      <div class="field">
+        <label class="field-label" for="audit_compliance">Industry-specific compliance considerations</label>
+        <textarea id="audit_compliance" placeholder="e.g., 'CCO requires pre-approval on all content,' 'IBD pre-approval lead time is 2 weeks,' 'HIPAA limits on patient stories'"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: CONTACT ═══ -->
+  <div class="section">
+    <div class="section-head">
+      <div class="section-num">V</div>
+      <div class="section-head-text">
+        <div class="section-name">Contact</div>
+        <div class="section-desc">Where prospects book — used for the primary call-to-action on your final playbook.</div>
+      </div>
+    </div>
+    <div class="section-body">
+      <div class="field-grid field-grid-2">
+        <div class="field">
+          <label class="field-label" for="contact_name">Contact person <span class="required">*</span></label>
+          <input type="text" id="contact_name" placeholder="e.g., Sarah Chen">
+        </div>
+        <div class="field">
+          <label class="field-label" for="contact_email">Email <span class="required">*</span></label>
+          <input type="email" id="contact_email" placeholder="sarah@meridianwealth.com">
+        </div>
+      </div>
+      <div class="field-grid field-grid-2">
+        <div class="field">
+          <label class="field-label" for="contact_calendar">Calendar booking URL</label>
+          <input type="url" id="contact_calendar" placeholder="https://calendly.com/yourname">
+          <p class="field-help below">Used as the primary CTA. Typically Calendly for service firms; may be a demo URL for tech.</p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="contact_phone">Phone (optional)</label>
+          <input type="tel" id="contact_phone" placeholder="e.g., (555) 555-5555">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="contact_additional_ctas">Additional CTA URLs</label>
+        <textarea id="contact_additional_ctas" placeholder="Demo signup URL, online booking link, additional contact form — any other URLs the playbook should reference."></textarea>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-text">
+    <strong>Marketing Playbook Intake</strong> · Form v1.3 · Submissions transmit securely. Form data also saves locally to your browser as you type.
+  </div>
+</footer>
+
+</div>
+
+<!-- ACTIONS BAR -->
+<div class="actions-bar">
+  <div class="actions-inner">
+    <div class="actions-status">
+      <span id="completion-status">Progress: <strong id="completion-num">0</strong> of 5 sections started</span>
+    </div>
+    <div class="actions-buttons">
+      <button class="btn btn-secondary" id="clear-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg>
+        Clear All
+      </button>
+      <button class="btn btn-primary" id="submit-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        Submit to SuperSymm
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SUBMISSION MODAL -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+
+    <div class="modal-state state-submitting active" id="state-submitting">
+      <div class="spinner"></div>
+      <div class="state-submitting-title">Submitting your intake</div>
+      <div class="state-submitting-text">This usually takes just a few seconds…</div>
+    </div>
+
+    <div class="modal-state state-success" id="state-success">
+      <div class="success-head">
+        <div class="success-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="success-title">Thank you — <em>your intake is in.</em></div>
+        <div class="success-sub">We've received your intake and it's now in the SuperSymm queue. You'll hear from us within one business day to confirm next steps.</div>
+      </div>
+      <div class="success-body">
+        <div class="success-receipt">
+          <div class="success-receipt-label">Submission receipt</div>
+          <dl class="success-receipt-rows">
+            <div class="success-receipt-row"><dt>Firm</dt><dd id="receipt-firm">—</dd></div>
+            <div class="success-receipt-row"><dt>Industry</dt><dd id="receipt-industry">—</dd></div>
+            <div class="success-receipt-row"><dt>Tier</dt><dd id="receipt-tier">—</dd></div>
+            <div class="success-receipt-row"><dt>Logo</dt><dd id="receipt-logo">—</dd></div>
+            <div class="success-receipt-row"><dt>Submitted</dt><dd id="receipt-time">—</dd></div>
+            <div class="success-receipt-row"><dt>Reference</dt><dd id="receipt-ref">—</dd></div>
+          </dl>
+        </div>
+        <p class="success-next"><strong>What happens next:</strong> Our team reviews your intake, confirms tier and scope, and reaches out by email to set timing. If you don't see a reply within one business day, check spam or email us directly.</p>
+      </div>
+      <div class="success-foot">
+        <div class="success-foot-text">You can close this window.</div>
+        <div class="success-foot-buttons">
+          <button class="btn btn-secondary" id="success-download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download a copy
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-state state-error" id="state-error">
+      <div class="error-head">
+        <div class="error-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="error-title">Submission didn't go through</div>
+        <div class="error-sub">Don't worry — your form data is still here. Try again, or download a copy and email it to us directly.</div>
+      </div>
+      <div class="error-body">
+        <div class="error-detail" id="error-detail">An unexpected error occurred.</div>
+        <p class="error-fallback">If the issue persists, download your intake below and email it to <strong>audit@supersymm.com</strong>. We'll handle it from there.</p>
+      </div>
+      <div class="error-foot">
+        <button class="btn btn-secondary copy-btn" id="error-copy-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+          Copy markdown
+        </button>
+        <button class="btn btn-secondary" id="error-download-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download intake.md
+        </button>
+        <button class="btn btn-error" id="error-retry-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Try again
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+
+  // ═══════════════════════════════════════════════
+  // CONFIGURATION — EDIT THESE TWO VALUES
+  // ═══════════════════════════════════════════════
+  
+  const ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbwsupOstSnKD6wQBhllLgiSjM7SuW3FQChI7qSAJZFxvInZb-bL1rTES96CYhQgkp11/exec';
+  const SHARED_SECRET = 'xK9mp3QzR7tL5nB8vH3jY6dQ';
+  
+  // ═══════════════════════════════════════════════
+  
+  var STORAGE_KEY = 'supersymm_intake_v1';
+  var lastGeneratedMarkdown = '';
+  var lastSubmissionData = null;
+  
+  // Logo state (NOT stored in localStorage — files are too big and prospect
+  // can just re-upload if they come back)
+  var logoState = {
+    file: null,
+    base64: null,
+    mimeType: null,
+    sizeBytes: 0,
+    filename: null
+  };
+  
+  // Logo limits
+  var LOGO_MAX_BYTES = 5 * 1024 * 1024; // 5MB
+  var LOGO_ALLOWED_TYPES = [
+    'image/svg+xml',
+    'image/png',
+    'image/jpeg',
+    'application/pdf'
+  ];
+  var LOGO_ALLOWED_EXTENSIONS = ['svg', 'png', 'jpg', 'jpeg', 'pdf'];
+  
+  // Set today's date in header
+  var today = new Date();
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var dateStr = months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear();
+  document.getElementById('header-date').textContent = dateStr;
+  
+  function $(id) { return document.getElementById(id); }
+  function $$(sel) { return Array.from(document.querySelectorAll(sel)); }
+  function getVal(id) { var el = $(id); return el ? el.value.trim() : ''; }
+  function setVal(id, val) { var el = $(id); if (el && val !== undefined) el.value = val; }
+  function getRadioVal(name) { var el = document.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
+  function setRadioVal(name, val) { if (!val) return; var el = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if (el) el.checked = true; }
+  function getCheckboxVals(name) { return $$('input[name="' + name + '"]:checked').map(function(el){ return el.value; }); }
+  function setCheckboxVals(name, vals) {
+    if (!Array.isArray(vals)) return;
+    vals.forEach(function(v){
+      var el = document.querySelector('input[name="' + name + '"][value="' + v + '"]');
+      if (el) el.checked = true;
+    });
+  }
+  
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+  }
+  
+  // ═══ INDUSTRY CONDITIONAL DISPLAY ═══
+  function updateIndustryConditionals() {
+    $$('.industry-conditional').forEach(function(el){ el.classList.remove('active'); });
+    var selected = document.querySelector('input[name="industry"]:checked');
+    if (!selected) return;
+    var conditionalId = selected.getAttribute('data-conditional');
+    if (conditionalId) {
+      var conditional = $(conditionalId);
+      if (conditional) conditional.classList.add('active');
+    }
+  }
+  $$('input[name="industry"]').forEach(function(el){ el.addEventListener('change', updateIndustryConditionals); });
+  
+  // ═══ COLOR PICKER SYNC ═══
+  function syncColor(textId, pickerId) {
+    var textEl = $(textId);
+    var pickerEl = $(pickerId);
+    if (!textEl || !pickerEl) return;
+    textEl.addEventListener('input', function(){
+      var v = textEl.value.trim();
+      if (/^#[0-9A-Fa-f]{6}$/.test(v)) pickerEl.value = v;
+    });
+    pickerEl.addEventListener('input', function(){
+      textEl.value = pickerEl.value.toUpperCase();
+      save();
+    });
+  }
+  syncColor('brand_primary_color', 'brand_primary_color_picker');
+  syncColor('brand_secondary_color', 'brand_secondary_color_picker');
+  
+  // ═══ LOGO UPLOAD HANDLING ═══
+  
+  var logoDropZone = $('logo-drop-zone');
+  var logoInput = $('logo_input');
+  var logoErrorMsg = $('logo-error-msg');
+  
+  function showLogoError(message) {
+    logoDropZone.classList.add('has-error');
+    logoDropZone.classList.remove('has-file');
+    logoErrorMsg.textContent = message;
+    // Reset state
+    clearLogoState();
+  }
+  
+  function clearLogoError() {
+    logoDropZone.classList.remove('has-error');
+  }
+  
+  function clearLogoState() {
+    logoState.file = null;
+    logoState.base64 = null;
+    logoState.mimeType = null;
+    logoState.sizeBytes = 0;
+    logoState.filename = null;
+    logoInput.value = '';
+  }
+  
+  function validateLogoFile(file) {
+    // Check size
+    if (file.size > LOGO_MAX_BYTES) {
+      return { ok: false, error: 'File too large (' + formatBytes(file.size) + '). Max is 5 MB.' };
+    }
+    if (file.size === 0) {
+      return { ok: false, error: 'File is empty.' };
+    }
+    
+    // Check type (MIME type if present, fall back to extension)
+    var mimeType = (file.type || '').toLowerCase();
+    var extension = (file.name.split('.').pop() || '').toLowerCase();
+    
+    var mimeOk = LOGO_ALLOWED_TYPES.indexOf(mimeType) !== -1;
+    var extOk = LOGO_ALLOWED_EXTENSIONS.indexOf(extension) !== -1;
+    
+    if (!mimeOk && !extOk) {
+      return { ok: false, error: 'Unsupported file type. Please use SVG, PNG, JPG, or PDF.' };
+    }
+    
+    // Normalize MIME type — for SVGs, browsers may report "image/svg+xml" or
+    // sometimes nothing, fallback to extension
+    var resolvedMimeType = mimeType;
+    if (!resolvedMimeType || !mimeOk) {
+      var extToMime = {
+        'svg':  'image/svg+xml',
+        'png':  'image/png',
+        'jpg':  'image/jpeg',
+        'jpeg': 'image/jpeg',
+        'pdf':  'application/pdf'
+      };
+      resolvedMimeType = extToMime[extension] || mimeType;
+    }
+    
+    return { ok: true, mimeType: resolvedMimeType };
+  }
+  
+  function handleLogoFile(file) {
+    clearLogoError();
+    
+    if (!file) {
+      clearLogoState();
+      logoDropZone.classList.remove('has-file');
+      return;
+    }
+    
+    var validation = validateLogoFile(file);
+    if (!validation.ok) {
+      showLogoError(validation.error);
+      return;
+    }
+    
+    // Read file as base64 (data URL)
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var dataUrl = e.target.result;
+      // Strip data URL prefix to get pure base64
+      var base64 = dataUrl.indexOf('base64,') !== -1 
+        ? dataUrl.split('base64,')[1] 
+        : dataUrl;
+      
+      logoState.file = file;
+      logoState.base64 = base64;
+      logoState.mimeType = validation.mimeType;
+      logoState.sizeBytes = file.size;
+      logoState.filename = file.name;
+      
+      // Update UI
+      $('logo-filename').textContent = file.name;
+      $('logo-type').textContent = validation.mimeType.split('/').pop().toUpperCase().replace('SVG+XML', 'SVG');
+      $('logo-size').textContent = formatBytes(file.size);
+      
+      // Show preview for raster images and SVG (not PDF)
+      var preview = $('logo-preview');
+      if (validation.mimeType === 'image/png' || validation.mimeType === 'image/jpeg' || validation.mimeType === 'image/svg+xml') {
+        preview.innerHTML = '<img src="' + dataUrl + '" alt="Logo preview">';
+      } else {
+        // PDF: show file icon
+        preview.innerHTML = '<svg class="logo-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+      }
+      
+      logoDropZone.classList.add('has-file');
+    };
+    reader.onerror = function() {
+      showLogoError('Could not read file. Please try a different file.');
+    };
+    reader.readAsDataURL(file);
+  }
+  
+  logoInput.addEventListener('change', function(e) {
+    var file = e.target.files && e.target.files[0];
+    handleLogoFile(file);
+  });
+  
+  // Drag and drop
+  ['dragenter', 'dragover'].forEach(function(eventName){
+    logoDropZone.addEventListener(eventName, function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if (!logoDropZone.classList.contains('has-file')) {
+        logoDropZone.classList.add('dragging');
+      }
+    });
+  });
+  
+  ['dragleave', 'drop'].forEach(function(eventName){
+    logoDropZone.addEventListener(eventName, function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      logoDropZone.classList.remove('dragging');
+    });
+  });
+  
+  logoDropZone.addEventListener('drop', function(e){
+    if (logoDropZone.classList.contains('has-file')) return;
+    var file = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (file) handleLogoFile(file);
+  });
+  
+  $('logo-clear').addEventListener('click', function(e){
+    e.stopPropagation();
+    clearLogoState();
+    clearLogoError();
+    logoDropZone.classList.remove('has-file');
+    $('logo-preview').innerHTML = '<svg class="logo-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>';
+  });
+  
+  // ═══ AUTOSAVE ═══
+  var saveTimer = null;
+  function scheduleSave() {
+    if (saveTimer) clearTimeout(saveTimer);
+    $('autosave-status').textContent = 'saving…';
+    saveTimer = setTimeout(save, 500);
+  }
+  
+  function gatherData() {
+    return {
+      firm_legal_name: getVal('firm_legal_name'),
+      firm_dba: getVal('firm_dba'),
+      firm_short_name: getVal('firm_short_name'),
+      industry: getRadioVal('industry'),
+      ria_structure: getRadioVal('ria_structure'),
+      ria_ibd_name: getVal('ria_ibd_name'),
+      ria_services: getCheckboxVals('ria_services'),
+      ria_seminars: getRadioVal('ria_seminars'),
+      hc_specialty: getVal('hc_specialty'),
+      hc_other_specialty: getVal('hc_other_specialty'),
+      hc_payment: getRadioVal('hc_payment'),
+      hc_second_opinion: getRadioVal('hc_second_opinion'),
+      hc_procedures: getVal('hc_procedures'),
+      hc_insurance: getVal('hc_insurance'),
+      tax_service: getRadioVal('tax_service'),
+      tax_niche: getVal('tax_niche'),
+      tax_credentials: getCheckboxVals('tax_credentials'),
+      tech_subcat: getRadioVal('tech_subcat'),
+      tech_conversion: getRadioVal('tech_conversion'),
+      tech_segment: getRadioVal('tech_segment'),
+      tech_compliance: getCheckboxVals('tech_compliance'),
+      other_industry_desc: getVal('other_industry_desc'),
+      firm_city: getVal('firm_city'),
+      firm_service_area: getVal('firm_service_area'),
+      firm_scale_metric: getVal('firm_scale_metric'),
+      firm_years: getVal('firm_years'),
+      firm_team_size: getVal('firm_team_size'),
+      firm_principals: getVal('firm_principals'),
+      brand_primary_color: getVal('brand_primary_color'),
+      brand_secondary_color: getVal('brand_secondary_color'),
+      brand_tone: getRadioVal('brand_tone'),
+      brand_tagline: getVal('brand_tagline'),
+      brand_voice: getVal('brand_voice'),
+      tech_website: getVal('tech_website'),
+      tech_crm: getVal('tech_crm'),
+      tech_email: getVal('tech_email'),
+      tech_scheduling: getVal('tech_scheduling'),
+      tech_analytics: getVal('tech_analytics'),
+      tech_social: getVal('tech_social'),
+      tech_forms: getVal('tech_forms'),
+      tech_automation: getVal('tech_automation'),
+      tech_compliance_tool: getVal('tech_compliance'),
+      tech_other: getVal('tech_other'),
+      audit_tier: getRadioVal('audit_tier'),
+      audit_target_personas: getVal('audit_target_personas'),
+      audit_goals: getVal('audit_goals'),
+      audit_hours: getVal('audit_hours'),
+      audit_budget: getVal('audit_budget'),
+      audit_pain_points: getVal('audit_pain_points'),
+      audit_compliance: getVal('audit_compliance'),
+      contact_name: getVal('contact_name'),
+      contact_email: getVal('contact_email'),
+      contact_calendar: getVal('contact_calendar'),
+      contact_phone: getVal('contact_phone'),
+      contact_additional_ctas: getVal('contact_additional_ctas')
+    };
+  }
+  
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(gatherData()));
+      $('autosave-status').textContent = 'saved ' + new Date().toLocaleTimeString();
+    } catch (e) {
+      $('autosave-status').textContent = 'save failed';
+    }
+    updateCompletionStatus();
+  }
+  
+  function load() {
+    var raw;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { return; }
+    
+    setVal('firm_legal_name', data.firm_legal_name);
+    setVal('firm_dba', data.firm_dba);
+    setVal('firm_short_name', data.firm_short_name);
+    setRadioVal('industry', data.industry);
+    setRadioVal('ria_structure', data.ria_structure);
+    setVal('ria_ibd_name', data.ria_ibd_name);
+    setCheckboxVals('ria_services', data.ria_services);
+    setRadioVal('ria_seminars', data.ria_seminars);
+    setVal('hc_specialty', data.hc_specialty);
+    setVal('hc_other_specialty', data.hc_other_specialty);
+    setRadioVal('hc_payment', data.hc_payment);
+    setRadioVal('hc_second_opinion', data.hc_second_opinion);
+    setVal('hc_procedures', data.hc_procedures);
+    setVal('hc_insurance', data.hc_insurance);
+    setRadioVal('tax_service', data.tax_service);
+    setVal('tax_niche', data.tax_niche);
+    setCheckboxVals('tax_credentials', data.tax_credentials);
+    setRadioVal('tech_subcat', data.tech_subcat);
+    setRadioVal('tech_conversion', data.tech_conversion);
+    setRadioVal('tech_segment', data.tech_segment);
+    setCheckboxVals('tech_compliance', data.tech_compliance);
+    setVal('other_industry_desc', data.other_industry_desc);
+    setVal('firm_city', data.firm_city);
+    setVal('firm_service_area', data.firm_service_area);
+    setVal('firm_scale_metric', data.firm_scale_metric);
+    setVal('firm_years', data.firm_years);
+    setVal('firm_team_size', data.firm_team_size);
+    setVal('firm_principals', data.firm_principals);
+    setVal('brand_primary_color', data.brand_primary_color);
+    setVal('brand_secondary_color', data.brand_secondary_color);
+    setRadioVal('brand_tone', data.brand_tone);
+    setVal('brand_tagline', data.brand_tagline);
+    setVal('brand_voice', data.brand_voice);
+    if (data.brand_primary_color && /^#[0-9A-Fa-f]{6}$/.test(data.brand_primary_color)) {
+      $('brand_primary_color_picker').value = data.brand_primary_color;
+    }
+    if (data.brand_secondary_color && /^#[0-9A-Fa-f]{6}$/.test(data.brand_secondary_color)) {
+      $('brand_secondary_color_picker').value = data.brand_secondary_color;
+    }
+    setVal('tech_website', data.tech_website);
+    setVal('tech_crm', data.tech_crm);
+    setVal('tech_email', data.tech_email);
+    setVal('tech_scheduling', data.tech_scheduling);
+    setVal('tech_analytics', data.tech_analytics);
+    setVal('tech_social', data.tech_social);
+    setVal('tech_forms', data.tech_forms);
+    setVal('tech_automation', data.tech_automation);
+    setVal('tech_compliance', data.tech_compliance_tool);
+    setVal('tech_other', data.tech_other);
+    setRadioVal('audit_tier', data.audit_tier);
+    setVal('audit_target_personas', data.audit_target_personas);
+    setVal('audit_goals', data.audit_goals);
+    setVal('audit_hours', data.audit_hours);
+    setVal('audit_budget', data.audit_budget);
+    setVal('audit_pain_points', data.audit_pain_points);
+    setVal('audit_compliance', data.audit_compliance);
+    setVal('contact_name', data.contact_name);
+    setVal('contact_email', data.contact_email);
+    setVal('contact_calendar', data.contact_calendar);
+    setVal('contact_phone', data.contact_phone);
+    setVal('contact_additional_ctas', data.contact_additional_ctas);
+    
+    updateIndustryConditionals();
+    updateCompletionStatus();
+  }
+  
+  $$('input, textarea, select').forEach(function(el){
+    if (el.id === 'logo_input') return; // skip file input
+    el.addEventListener('input', scheduleSave);
+    el.addEventListener('change', scheduleSave);
+  });
+  
+  function updateCompletionStatus() {
+    var sections = [
+      !!(getVal('firm_legal_name') || getRadioVal('industry') || getVal('firm_principals')),
+      !!(getVal('brand_primary_color') || getRadioVal('brand_tone') || getVal('brand_tagline')),
+      !!(getVal('tech_website') || getVal('tech_crm') || getVal('tech_email')),
+      !!(getRadioVal('audit_tier') || getVal('audit_goals')),
+      !!(getVal('contact_name') || getVal('contact_email'))
+    ];
+    var count = sections.filter(Boolean).length;
+    $('completion-num').textContent = count;
+  }
+  
+  // ═══ MARKDOWN GENERATION ═══
+  function labelize(s) {
+    if (!s) return '';
+    return s.replace(/_/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); });
+  }
+  function notProvided(v) { return v ? v : '_Not provided_'; }
+  function industryModuleFor(industry) {
+    var map = {
+      'ria': 'industry_ria_v1.1.md',
+      'healthcare': 'industry_healthcare_v1.1.md',
+      'tax_financial': 'industry_tax_financial_v1.0.md',
+      'tech_solutions': 'industry_tech_solutions_v1.0.md',
+      'other': '_(no module — see operator notes)_'
+    };
+    return map[industry] || '_(industry not selected)_';
+  }
+  function industryLabelFor(industry) {
+    var map = {
+      'ria': 'RIA',
+      'healthcare': 'Healthcare',
+      'tax_financial': 'Tax & Financial',
+      'tech_solutions': 'Tech Solutions',
+      'other': 'Other'
+    };
+    return map[industry] || '_Not selected_';
+  }
+  
+  function generateMarkdown() {
+    var industry = getRadioVal('industry');
+    var firmName = getVal('firm_legal_name') || '[Firm Name]';
+    var dba = getVal('firm_dba');
+    var shortName = getVal('firm_short_name') || 'client';
+    var today = new Date().toISOString().slice(0, 10);
+    
+    var md = '';
+    md += '# Client Intake — ' + firmName + '\n\n';
+    md += '**Date completed:** ' + today + '\n';
+    md += '**Short name (for filenames):** `' + shortName + '`\n\n';
+    md += '---\n\n';
+    
+    md += '## 1. Firm Identity\n\n';
+    md += '- **Firm legal name:** ' + notProvided(getVal('firm_legal_name')) + '\n';
+    md += '- **DBA:** ' + (dba || '_(same as legal name)_') + '\n';
+    md += '- **Firm short name:** `' + shortName + '`\n';
+    md += '- **Industry (primary classification):** **' + industryLabelFor(industry) + '**\n';
+    md += '- **Industry module to load for downstream experts:** `' + industryModuleFor(industry) + '`\n';
+    
+    if (industry === 'ria') {
+      md += '- **Firm structure:** ' + labelize(getRadioVal('ria_structure') || 'not specified') + '\n';
+      var ibd = getVal('ria_ibd_name');
+      if (ibd) md += '- **IBD / Aggregator affiliation:** ' + ibd + '\n';
+      var services = getCheckboxVals('ria_services');
+      if (services.length) md += '- **Primary service line emphasis:** ' + services.map(labelize).join(', ') + '\n';
+      md += '- **Seminar / webinar program:** ' + labelize(getRadioVal('ria_seminars') || 'not specified') + '\n';
+    } else if (industry === 'healthcare') {
+      md += '- **Specialty:** ' + (getVal('hc_specialty') ? labelize(getVal('hc_specialty')) : '_Not specified_') + '\n';
+      var otherSpec = getVal('hc_other_specialty');
+      if (otherSpec) md += '- **Specialty detail:** ' + otherSpec + '\n';
+      md += '- **Payment model:** ' + labelize(getRadioVal('hc_payment') || 'not specified') + '\n';
+      md += '- **Second opinion business:** ' + labelize(getRadioVal('hc_second_opinion') || 'not specified') + '\n';
+      var procs = getVal('hc_procedures');
+      if (procs) md += '- **Key procedures/conditions:** ' + procs + '\n';
+      var ins = getVal('hc_insurance');
+      if (ins) md += '- **Insurance carriers accepted:** ' + ins + '\n';
+    } else if (industry === 'tax_financial') {
+      md += '- **Service type primary:** ' + labelize(getRadioVal('tax_service') || 'not specified') + '\n';
+      var niche = getVal('tax_niche');
+      if (niche) md += '- **Industry/niche specialization:** ' + niche + '\n';
+      var creds = getCheckboxVals('tax_credentials');
+      if (creds.length) md += '- **Credentials held:** ' + creds.map(function(c){ if (c === 'cfp') return 'CFP®'; return c.toUpperCase(); }).join(', ') + '\n';
+    } else if (industry === 'tech_solutions') {
+      md += '- **Subcategory:** ' + labelize(getRadioVal('tech_subcat') || 'not specified') + '\n';
+      md += '- **Primary conversion path:** ' + labelize(getRadioVal('tech_conversion') || 'not specified') + '\n';
+      md += '- **Target market segment:** ' + labelize(getRadioVal('tech_segment') || 'not specified') + '\n';
+      var compliances = getCheckboxVals('tech_compliance');
+      if (compliances.length) md += '- **Compliance certifications:** ' + compliances.map(function(c){ return c.toUpperCase().replace('_', ' '); }).join(', ') + '\n';
+    } else if (industry === 'other') {
+      md += '- **Industry description:** ' + notProvided(getVal('other_industry_desc')) + '\n';
+      md += '- **Operator note:** No industry module exists for this category.\n';
+    }
+    
+    md += '\n### Location and scale\n\n';
+    md += '- **Headquarters:** ' + notProvided(getVal('firm_city')) + '\n';
+    md += '- **Service area:** ' + notProvided(getVal('firm_service_area')) + '\n';
+    md += '- **Scale metric:** ' + notProvided(getVal('firm_scale_metric')) + '\n';
+    md += '- **Years in business:** ' + notProvided(getVal('firm_years')) + '\n';
+    md += '- **Team size:** ' + notProvided(getVal('firm_team_size')) + '\n\n';
+    md += '### Principal(s)\n\n';
+    md += notProvided(getVal('firm_principals')) + '\n\n---\n\n';
+    
+    md += '## 2. Branding\n\n';
+    md += '- **Primary brand color:** ' + notProvided(getVal('brand_primary_color')) + '\n';
+    md += '- **Secondary / accent color:** ' + notProvided(getVal('brand_secondary_color')) + '\n';
+    md += '- **Background tone preference:** ' + labelize(getRadioVal('brand_tone') || 'not specified') + '\n';
+    
+    // Logo line — reflects upload state
+    if (logoState.file) {
+      md += '- **Logo:** Uploaded — `' + logoState.filename + '` (' + formatBytes(logoState.sizeBytes) + ')\n';
+    } else {
+      md += '- **Logo:** _Not provided_\n';
+    }
+    
+    md += '- **Tagline / positioning:** ' + notProvided(getVal('brand_tagline')) + '\n';
+    var voice = getVal('brand_voice');
+    if (voice) md += '\n### Brand voice notes\n\n' + voice + '\n';
+    md += '\n---\n\n';
+    
+    md += '## 3. Tech Stack (10 Categories)\n\n';
+    md += '| # | Category | Tool |\n|---|---|---|\n';
+    md += '| 1 | Website platform | ' + (getVal('tech_website') || '_unknown_') + ' |\n';
+    md += '| 2 | CRM | ' + (getVal('tech_crm') || '_unknown_') + ' |\n';
+    md += '| 3 | Email marketing tool | ' + (getVal('tech_email') || '_unknown_') + ' |\n';
+    md += '| 4 | Scheduling tool | ' + (getVal('tech_scheduling') || '_unknown_') + ' |\n';
+    md += '| 5 | Analytics | ' + (getVal('tech_analytics') || '_unknown_') + ' |\n';
+    md += '| 6 | Social scheduling | ' + (getVal('tech_social') || '_unknown_') + ' |\n';
+    md += '| 7 | Lead capture forms | ' + (getVal('tech_forms') || '_unknown_') + ' |\n';
+    md += '| 8 | Automation connector | ' + (getVal('tech_automation') || '_unknown_') + ' |\n';
+    md += '| 9 | Compliance review tool / process | ' + (getVal('tech_compliance') || '_unknown_') + ' |\n';
+    md += '| 10 | Other notable tools | ' + (getVal('tech_other') || '_none_') + ' |\n\n---\n\n';
+    
+    md += '## 4. Audit Context\n\n';
+    md += '- **Audit tier requested:** Tier ' + (getRadioVal('audit_tier') || '_not specified_') + '\n';
+    md += '- **Audit provider:** SuperSymm\n';
+    md += '- **Capacity for marketing work:** ' + notProvided(getVal('audit_hours')) + ' hours/week\n';
+    md += '- **Estimated marketing budget:** ' + notProvided(getVal('audit_budget')) + '\n\n';
+    var personas = getVal('audit_target_personas');
+    md += '### Target client / persona focus\n\n';
+    md += (personas || '_Not specified — Personas expert will infer from market analysis_') + '\n\n';
+    md += '### Specific goals for this playbook\n\n';
+    md += notProvided(getVal('audit_goals')) + '\n\n';
+    var pains = getVal('audit_pain_points');
+    if (pains) md += '### Existing marketing pain points or concerns\n\n' + pains + '\n\n';
+    var compNotes = getVal('audit_compliance');
+    if (compNotes) md += '### Industry-specific compliance considerations\n\n' + compNotes + '\n\n';
+    md += '---\n\n';
+    
+    md += '## 5. Contact\n\n';
+    md += '- **Contact person:** ' + notProvided(getVal('contact_name')) + '\n';
+    md += '- **Email:** ' + notProvided(getVal('contact_email')) + '\n';
+    md += '- **Calendar booking URL:** ' + notProvided(getVal('contact_calendar')) + '\n';
+    var phone = getVal('contact_phone');
+    if (phone) md += '- **Phone:** ' + phone + '\n';
+    var addtlCtas = getVal('contact_additional_ctas');
+    if (addtlCtas) md += '\n### Additional CTA URLs\n\n' + addtlCtas + '\n';
+    md += '\n---\n\n';
+    
+    md += '## For SuperSymm Operator\n\n';
+    md += '**Industry module to load alongside foundation files for every downstream expert:**\n\n';
+    md += '`' + industryModuleFor(industry) + '`\n\n';
+    md += '**Tier requested:** Tier ' + (getRadioVal('audit_tier') || '_unspecified_') + '\n\n';
+    if (logoState.file) {
+      md += '**Logo file:** Attached as `' + logoState.filename + '` (saved alongside this intake.md in Drive)\n\n';
+    }
+    md += '**Pipeline:** Start with Business Overview (Step 1). Confirm intake completeness in initial chat. Industry classification is `' + (industry || 'unspecified') + '`.\n';
+    
+    return md;
+  }
+  
+  // ═══ VALIDATION ═══
+  function validateForSubmission() {
+    var required = [
+      { id: 'firm_legal_name', label: 'Firm legal name' },
+      { id: 'firm_short_name', label: 'Firm short name' },
+      { id: 'firm_city', label: 'Headquarters city & state' },
+      { id: 'firm_scale_metric', label: 'Scale metric' },
+      { id: 'firm_principals', label: 'Principal(s)' },
+      { id: 'brand_primary_color', label: 'Primary brand color' },
+      { id: 'audit_goals', label: 'Specific goals' },
+      { id: 'audit_hours', label: 'Capacity hours/week' },
+      { id: 'contact_name', label: 'Contact person' },
+      { id: 'contact_email', label: 'Contact email' }
+    ];
+    var missing = required.filter(function(f){ return !getVal(f.id); });
+    if (missing.length) return { ok: false, error: 'Please fill in: ' + missing.map(function(f){ return f.label; }).join(', ') };
+    if (!getRadioVal('industry')) return { ok: false, error: 'Please select an industry in Section 1.' };
+    if (!getRadioVal('audit_tier')) return { ok: false, error: 'Please select an audit tier in Section 4.' };
+    return { ok: true };
+  }
+  
+  // ═══ MODAL STATE MANAGEMENT ═══
+  function showModal(state) {
+    $$('.modal-state').forEach(function(el){ el.classList.remove('active'); });
+    $('state-' + state).classList.add('active');
+    $('modal').classList.add('open');
+  }
+  function hideModal() { $('modal').classList.remove('open'); }
+  
+  // ═══ SUBMISSION ═══
+  async function submitIntake() {
+    var validation = validateForSubmission();
+    if (!validation.ok) { alert(validation.error); return; }
+    
+    if (ENDPOINT_URL.indexOf('PASTE_YOUR') !== -1 || SHARED_SECRET.indexOf('CHANGE_THIS') !== -1) {
+      alert('This intake form has not been fully configured yet. Please contact the form owner.\n\n(Form owner: edit ENDPOINT_URL and SHARED_SECRET in the HTML source.)');
+      return;
+    }
+    
+    lastGeneratedMarkdown = generateMarkdown();
+    var industry = getRadioVal('industry');
+    
+    lastSubmissionData = {
+      firmName: getVal('firm_legal_name') || 'Unknown',
+      shortName: getVal('firm_short_name') || 'client',
+      industry: industryLabelFor(industry) || 'Other',
+      tier: getRadioVal('audit_tier') || 'unspecified',
+      contactName: getVal('contact_name') || '',
+      contactEmail: getVal('contact_email') || '',
+      markdown: lastGeneratedMarkdown,
+      secret: SHARED_SECRET
+    };
+    
+    // Include logo if uploaded
+    if (logoState.file && logoState.base64) {
+      lastSubmissionData.logo = {
+        base64: logoState.base64,
+        mimeType: logoState.mimeType,
+        filename: logoState.filename,
+        sizeBytes: logoState.sizeBytes
+      };
+    }
+    
+    showModal('submitting');
+    
+    try {
+      var response = await fetch(ENDPOINT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(lastSubmissionData),
+        redirect: 'follow'
+      });
+      
+      var result;
+      try {
+        result = await response.json();
+      } catch (e) {
+        if (response.ok) result = { success: true };
+        else throw new Error('Unexpected response: ' + response.status);
+      }
+      
+      if (result.success) {
+        showSuccess(result);
+      } else {
+        showError(result.error || 'Submission failed');
+      }
+    } catch (err) {
+      showError(err.message || 'Network error');
+    }
+  }
+  
+  function showSuccess(result) {
+    var now = new Date();
+    var timeStr = now.toLocaleString('en-US', { 
+      month: 'short', day: 'numeric', year: 'numeric',
+      hour: 'numeric', minute: '2-digit'
+    });
+    var ref = 'SS-' + now.getFullYear() + 
+              String(now.getMonth()+1).padStart(2, '0') + 
+              String(now.getDate()).padStart(2, '0') + '-' +
+              Math.random().toString(36).substring(2, 6).toUpperCase();
+    
+    $('receipt-firm').textContent = lastSubmissionData.firmName;
+    $('receipt-industry').textContent = lastSubmissionData.industry;
+    $('receipt-tier').textContent = 'Tier ' + lastSubmissionData.tier;
+    $('receipt-logo').textContent = lastSubmissionData.logo 
+      ? lastSubmissionData.logo.filename + ' (' + formatBytes(lastSubmissionData.logo.sizeBytes) + ')'
+      : 'Not provided';
+    $('receipt-time').textContent = timeStr;
+    $('receipt-ref').textContent = ref;
+    
+    showModal('success');
+  }
+  
+  function showError(message) {
+    $('error-detail').textContent = message;
+    showModal('error');
+  }
+  
+  $('submit-btn').addEventListener('click', submitIntake);
+  
+  $('clear-btn').addEventListener('click', function(){
+    if (!confirm('Clear all form data? This cannot be undone.')) return;
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    location.reload();
+  });
+  
+  $('success-download-btn').addEventListener('click', function(){ downloadMarkdown(); });
+  $('error-retry-btn').addEventListener('click', submitIntake);
+  $('error-download-btn').addEventListener('click', downloadMarkdown);
+  
+  $('error-copy-btn').addEventListener('click', function(){
+    var btn = $('error-copy-btn');
+    function showCopied() {
+      btn.classList.add('copied');
+      var orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Copied';
+      setTimeout(function(){
+        btn.classList.remove('copied');
+        btn.innerHTML = orig;
+      }, 1800);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(lastGeneratedMarkdown).then(showCopied);
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = lastGeneratedMarkdown;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showCopied(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  });
+  
+  function downloadMarkdown() {
+    var blob = new Blob([lastGeneratedMarkdown], { type: 'text/markdown;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'intake.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }
+  
+  $('modal').addEventListener('click', function(e){
+    if (e.target === $('modal')) {
+      var isSubmitting = $('state-submitting').classList.contains('active');
+      if (!isSubmitting) hideModal();
+    }
+  });
+  
+  load();
+  $('autosave-status').textContent = 'ready';
+
+})();
+</script>
+
+</body>
+</html>
