@@ -235,7 +235,7 @@ h1.title em { font-style: italic; font-weight: 300; color: var(--accent); }
 
 .section-desc {
   font-size: 15px;
-  color: var(--ink-mute);
+  color: var(--ink-soft);
   line-height: 1.55;
   max-width: 640px;
 }
@@ -248,11 +248,11 @@ h1.title em { font-style: italic; font-weight: 300; color: var(--accent); }
 .field-label {
   display: block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-mute);
+  color: var(--ink-soft);
   margin-bottom: 12px;
 }
 
@@ -709,9 +709,89 @@ select option { background: var(--paper-card); color: var(--ink); font-size: 16p
 .tier-card input:checked + .tier-card-body .tier-card-name { color: var(--paper); }
 
 .tier-card-desc { font-size: 13.5px; color: var(--ink-mute); line-height: 1.5; }
+.tier-card-price { font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 600; color: var(--ink); margin: 10px 0 4px; letter-spacing: -0.01em; }
+.tier-card-price-old { font-size: 14px; font-weight: 400; color: var(--ink-faint); text-decoration: line-through; margin-right: 6px; }
+.tier-card input:checked + .tier-card-body .tier-card-price { color: var(--paper); }
+.tier-card input:checked + .tier-card-body .tier-card-price-old { color: rgba(239,233,220,0.55); }
 
 .tier-card input:checked + .tier-card-body .tier-card-desc {
   color: rgba(239, 233, 220, 0.75);
+}
+
+/* Compare modal within intake form */
+.intake-compare-trigger {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; border: 1px solid var(--rule-strong);
+  border-radius: var(--rm); padding: 10px 20px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft);
+  cursor: pointer; transition: all 0.18s; margin-top: 14px;
+}
+.intake-compare-trigger:hover { border-color: var(--accent); color: var(--accent); }
+
+.intake-invoice-note {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 14px; font-weight: 300; font-style: italic;
+  color: var(--ink-mute); line-height: 1.55;
+  margin-top: 18px; padding: 14px 18px;
+  background: var(--paper-soft); border: 1px solid var(--rule);
+  border-radius: var(--r);
+}
+
+/* Reuse landing page compare overlay styles, scoped */
+.compare-overlay-intake {
+  display: none; position: fixed; inset: 0;
+  background: rgba(31,27,20,0.55); backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px); z-index: 200;
+  padding: 40px 24px; overflow-y: auto;
+}
+.compare-overlay-intake.open { display: flex; align-items: flex-start; justify-content: center; }
+.compare-modal-intake {
+  background: var(--paper-card); border-radius: var(--rm); max-width: 880px; width: 100%;
+  margin: auto; box-shadow: 0 24px 70px rgba(31,27,20,0.25); overflow: hidden;
+}
+.compare-modal-head-intake {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 20px; padding: 28px 32px 22px; border-bottom: 1px solid var(--rule);
+}
+.compare-modal-title-intake {
+  font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 500;
+  color: var(--ink); letter-spacing: -0.015em; line-height: 1.2;
+}
+.compare-modal-sub-intake { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink-mute); margin-top: 6px; }
+.compare-close-intake {
+  flex-shrink: 0; background: transparent; border: 1px solid var(--rule-strong);
+  border-radius: var(--r); width: 34px; height: 34px; font-size: 18px;
+  line-height: 1; color: var(--ink-mute); cursor: pointer; transition: all 0.18s;
+}
+.compare-close-intake:hover { border-color: var(--accent); color: var(--accent); }
+.compare-table-wrap-intake { overflow-x: auto; padding: 8px 0; }
+.compare-table-intake {
+  width: 100%; border-collapse: collapse; font-family: 'Inter', sans-serif; min-width: 640px;
+}
+.compare-table-intake th, .compare-table-intake td {
+  text-align: left; padding: 13px 18px; font-size: 14px;
+  border-bottom: 1px solid var(--rule); vertical-align: top;
+}
+.compare-table-intake thead th {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute);
+  border-bottom: 2px solid var(--rule-strong); background: var(--paper-deep);
+}
+.compare-table-intake .row-feature { font-weight: 500; color: var(--ink); }
+.compare-table-intake .yes { color: var(--accent); font-weight: 700; }
+.compare-table-intake .no { color: var(--ink-faint); }
+.compare-table-intake tr.price-row td {
+  font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 600;
+  color: var(--ink); border-bottom: 2px solid var(--rule-strong); background: var(--paper-deep);
+}
+.compare-table-intake tr.price-row td:first-child {
+  font-size: 10px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-mute); font-weight: 600;
+}
+.compare-modal-foot-intake {
+  padding: 20px 32px 28px; text-align: center; border-top: 1px solid var(--rule);
+  font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-mute);
 }
 
 /* ═══ ACTIONS BAR ═══ */
@@ -1521,7 +1601,8 @@ select option { background: var(--paper-card); color: var(--ink); font-size: 16p
             <div class="tier-card-body">
               <div class="tier-card-num">Tier 1</div>
               <div class="tier-card-name">Marketing Audit</div>
-              <div class="tier-card-desc">Analytical audit + Activation Plan. Eight sections.</div>
+              <div class="tier-card-price"><span class="tier-card-price-old">$497</span>$200</div>
+              <div class="tier-card-desc">Analytical audit + Activation Plan. Eight sections. Delivered in 5–7 days.</div>
             </div>
           </label>
           <label class="tier-card">
@@ -1529,7 +1610,8 @@ select option { background: var(--paper-card); color: var(--ink); font-size: 16p
             <div class="tier-card-body">
               <div class="tier-card-num">Tier 2</div>
               <div class="tier-card-name">Audit + Channels</div>
-              <div class="tier-card-desc">Tier 1 + Paid Media + Social. Ten sections.</div>
+              <div class="tier-card-price"><span class="tier-card-price-old">$1,200</span>$500</div>
+              <div class="tier-card-desc">Tier 1 + Paid Media + Social. Ten sections. Delivered in 7–10 days.</div>
             </div>
           </label>
           <label class="tier-card">
@@ -1537,9 +1619,14 @@ select option { background: var(--paper-card); color: var(--ink); font-size: 16p
             <div class="tier-card-body">
               <div class="tier-card-num">Tier 3</div>
               <div class="tier-card-name">Full Campaign Kit</div>
-              <div class="tier-card-desc">Tier 2 + Content Production + Email &amp; Lifecycle. Thirteen sections.</div>
+              <div class="tier-card-price"><span class="tier-card-price-old">$2,500</span>$1,500</div>
+              <div class="tier-card-desc">Tier 2 + Content Production + Email &amp; Lifecycle. Thirteen sections. Delivered in 10–14 days.</div>
             </div>
           </label>
+        </div>
+        <button type="button" class="intake-compare-trigger" onclick="document.getElementById('intakeCompareOverlay').classList.add('open');document.body.style.overflow='hidden';">Compare all tiers in detail →</button>
+        <div class="intake-invoice-note">
+          Pricing shown is our current limited-time offer. After submitting, our team will review your intake and invoice you separately before work begins — no charge is made through this form.
         </div>
       </div>
       <div class="field">
@@ -1636,6 +1723,52 @@ select option { background: var(--paper-card); color: var(--ink); font-size: 16p
         Submit to SuperSymm
       </button>
     </div>
+  </div>
+</div>
+
+<!-- COMPARE TIERS MODAL -->
+<div class="compare-overlay-intake" id="intakeCompareOverlay" onclick="if(event.target===this){this.classList.remove('open');document.body.style.overflow='';}">
+  <div class="compare-modal-intake" role="dialog" aria-modal="true">
+    <div class="compare-modal-head-intake">
+      <div>
+        <div class="compare-modal-title-intake">Compare all three tiers</div>
+        <div class="compare-modal-sub-intake">Every tier is a complete, custom playbook. The difference is how much is strategy vs. done-for-you content.</div>
+      </div>
+      <button type="button" class="compare-close-intake" aria-label="Close" onclick="document.getElementById('intakeCompareOverlay').classList.remove('open');document.body.style.overflow='';">×</button>
+    </div>
+    <div class="compare-table-wrap-intake">
+      <table class="compare-table-intake">
+        <thead>
+          <tr>
+            <th>What's included</th>
+            <th>Tier 1<br>Marketing Audit</th>
+            <th>Tier 2<br>Audit + Channels</th>
+            <th>Tier 3<br>Full Campaign Kit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="row-feature">Business &amp; market analysis</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">Competitor research &amp; SWOT</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">Customer personas</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">SEO &amp; AI search analysis</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">90-day activation plan</td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">Paid media strategy</td><td><span class="no">—</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">Social media strategy &amp; audit</td><td><span class="no">—</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">Ad creative (copy &amp; concepts)</td><td><span class="no">—</span></td><td><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">90-day content calendar</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">Ready-to-publish posts &amp; blog drafts</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">Written email &amp; follow-up sequences</td><td><span class="no">—</span></td><td><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+          <tr><td class="row-feature">Delivery time</td><td>5–7 days</td><td>7–10 days</td><td>10–14 days</td></tr>
+          <tr class="price-row">
+            <td>Price</td>
+            <td><span style="text-decoration:line-through;color:var(--ink-faint);font-size:13px;font-weight:400;">$497</span> $200</td>
+            <td><span style="text-decoration:line-through;color:var(--ink-faint);font-size:13px;font-weight:400;">$1,200</span> $500</td>
+            <td><span style="text-decoration:line-through;color:var(--ink-faint);font-size:13px;font-weight:400;">$2,500</span> $1,500</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="compare-modal-foot-intake">Prices shown are limited-time offers. We will invoice you separately after reviewing your intake — no charge through this form.</div>
   </div>
 </div>
 
@@ -1749,6 +1882,24 @@ select option { background: var(--paper-card); color: var(--ink); font-size: 16p
   ];
   var LOGO_ALLOWED_EXTENSIONS = ['svg', 'png', 'jpg', 'jpeg', 'pdf'];
   
+  // Pre-select tier from URL param ?tier=1|2|3
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var tierParam = params.get('tier');
+    if (tierParam && ['1','2','3'].indexOf(tierParam) !== -1) {
+      var el = document.querySelector('input[name="audit_tier"][value="' + tierParam + '"]');
+      if (el) el.checked = true;
+    }
+  })();
+
+  // Escape key closes compare modal
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') {
+      var co = document.getElementById('intakeCompareOverlay');
+      if (co && co.classList.contains('open')) { co.classList.remove('open'); document.body.style.overflow = ''; }
+    }
+  });
+
   // Set today's date in header
   var today = new Date();
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
