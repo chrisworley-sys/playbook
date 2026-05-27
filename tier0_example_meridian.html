@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High-Level Audit: Meridian Wealth Partners — SuperSymm</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F9F6EE;
+  --bg-card: #FFFFFF;
+  --bg-deep: #F0EBDC;
+  --bg-tint: #FAF4E3;
+  --rule: #D9D2BE;
+  --rule-strong: #A89F8A;
+  --ink: #1A1612;
+  --ink-soft: #3A342A;
+  --ink-mute: #6B6253;
+  --ink-faint: #968C7A;
+  --accent: #8B2C1F;
+  --accent-soft: #B84A2C;
+  --accent-dark: #6B1F15;
+  --accent-tint: rgba(139, 44, 31, 0.07);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--ink); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; font-feature-settings: "ss01"; }
+.page-wrap { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+/* ═══ MASTHEAD ═══ */
+.masthead { display: flex; justify-content: space-between; align-items: center; padding: 24px 0 16px; border-bottom: 1px solid var(--rule); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+.masthead-brand strong { color: var(--accent); font-weight: 600; }
+
+/* ═══ HERO ═══ */
+.hero { padding: 56px 0 56px; max-width: 820px; }
+.hero-title { font-family: 'Fraunces', Georgia, serif; font-size: 76px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.0; margin-bottom: 24px; }
+.hero-title em { font-style: italic; font-weight: 300; }
+.hero-sub { font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 300; font-style: italic; line-height: 1.4; color: var(--ink-soft); margin-bottom: 28px; max-width: 680px; }
+.hero-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.hero-meta-divider { color: var(--rule-strong); }
+.hero-meta a { color: var(--ink-mute); text-decoration: underline; text-decoration-color: var(--rule-strong); text-underline-offset: 3px; }
+.hero-meta a:hover { color: var(--accent); }
+
+/* ═══ LEAD + WHO IS ═══ */
+.lead { font-family: 'Fraunces', Georgia, serif; font-size: 22px; font-weight: 400; line-height: 1.55; color: var(--ink-soft); padding-bottom: 32px; max-width: 820px; }
+.lead-link { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink-mute); padding-bottom: 56px; border-bottom: 1px solid var(--rule); }
+.lead-link a { color: var(--ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+.lead-link a:hover { color: var(--accent); }
+
+/* ═══ SECTION STRUCTURE ═══ */
+.section { padding: 72px 0; }
+.section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 16px; }
+.section-eyebrow.accent { color: var(--accent-dark); }
+.section-title { font-family: 'Fraunces', Georgia, serif; font-size: 44px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 18px; }
+.section-intro { font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 400; line-height: 1.6; color: var(--ink-soft); margin-bottom: 44px; max-width: 720px; }
+
+/* ═══ OBSERVATION CARDS (2x2 grid) ═══ */
+.observation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.observation-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 32px 32px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.observation-card.market {
+  background: var(--bg-tint);
+  border-color: var(--rule-strong);
+}
+
+.obs-num-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.obs-num {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 44px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 0.9;
+  flex-shrink: 0;
+}
+
+.obs-lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  background: transparent;
+}
+
+.obs-mode {
+  margin-bottom: 18px;
+}
+
+.obs-mode:last-child {
+  margin-bottom: 0;
+}
+
+.obs-mode-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.obs-mode-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ═══ PATTERN ═══ */
+.pattern-block {
+  background: var(--bg-deep);
+  padding: 56px 64px;
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  margin: 0 -64px;
+  border-radius: 4px;
+}
+
+.pattern-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 16px;
+}
+
+.pattern-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.pattern-summary {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 24px;
+  letter-spacing: -0.005em;
+  max-width: 820px;
+}
+
+.pattern-bullets { list-style: none; max-width: 820px; }
+
+.pattern-bullet {
+  padding: 14px 0 14px 28px;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--rule);
+}
+
+.pattern-bullet:first-child { border-top: none; }
+
+.pattern-bullet::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ═══ IMPLICATION CARDS (2x2 grid) ═══ */
+.implication-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.implication-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  padding: 28px 28px 26px;
+}
+
+.impl-lead {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+.impl-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ═══ PLAYBOOK DELIVERABLES ═══ */
+.playbook-intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+  max-width: 720px;
+}
+
+.playbook-intro em { font-style: italic; }
+
+.deliverables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.deliverable {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 22px 26px;
+  border-radius: 2px;
+}
+
+.deliverable-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+
+.deliverable-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+/* ═══ PRICING TIERS ═══ */
+.pricing-intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+  max-width: 620px;
+}
+
+.tier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.15fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.tier-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-card.recommended {
+  border-color: var(--accent);
+  border-width: 2px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(139, 44, 31, 0.08);
+}
+
+.tier-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: var(--bg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.tier-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 12px;
+}
+
+.tier-name {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.tier-price {
+  font-family: 'Inter', sans-serif;
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.tier-price-suffix {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-mute);
+  margin-bottom: 20px;
+}
+
+.tier-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tier-features { list-style: none; flex: 1; margin-bottom: 22px; }
+
+.tier-feature {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  padding: 7px 0 7px 20px;
+  position: relative;
+}
+
+.tier-feature::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.tier-cta {
+  display: block;
+  text-align: center;
+  padding: 14px 20px;
+  background: var(--ink);
+  color: var(--bg);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.18s;
+  text-transform: uppercase;
+}
+
+.tier-cta:hover { background: var(--accent); border-color: var(--accent); }
+
+.tier-card.recommended .tier-cta { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.tier-card.recommended .tier-cta:hover { background: var(--accent-soft); border-color: var(--accent-soft); }
+
+.tier-sample-link {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-mute);
+  text-decoration: underline;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 3px;
+}
+
+.tier-sample-link:hover { color: var(--accent); }
+
+/* ═══ PARTNER SECTION (tinted card, NOT dark) ═══ */
+.partner-block {
+  background: var(--bg-deep);
+  border: 2px solid var(--accent);
+  padding: 56px 56px 52px;
+  margin: 64px 0 0;
+  border-radius: 6px;
+  position: relative;
+}
+
+.partner-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.partner-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  border-radius: 50%;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--bg);
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+
+.partner-logo-text {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.partner-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 14px;
+}
+
+.partner-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+
+.partner-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.partner-intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  max-width: 720px;
+}
+
+.partner-services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 28px;
+  margin-bottom: 36px;
+}
+
+.partner-service {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.partner-service::before {
+  content: '→';
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+  font-size: 15px;
+}
+
+.partner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 30px;
+  background: var(--accent);
+  color: var(--bg);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.18s;
+  text-transform: uppercase;
+}
+
+.partner-cta:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+
+/* ═══ SECONDARY CTA ═══ */
+.secondary-cta { text-align: center; padding: 36px 0 16px; margin-top: 28px; }
+.secondary-cta-text { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink-soft); }
+.secondary-cta-text a { color: var(--ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.secondary-cta-text a:hover { color: var(--accent); }
+
+/* ═══ FOOTER ═══ */
+.footer { padding: 44px 0 30px; border-top: 1px solid var(--rule); background: var(--bg-deep); margin-top: 64px; }
+.footer-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 22px; }
+.footer-brand { font-family: 'Fraunces', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--ink); }
+.footer-tagline { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-mute); text-align: center; flex: 1; padding: 0 24px; }
+.footer-link { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-mute); text-decoration: none; }
+.footer-link:hover { color: var(--accent); }
+.footer-meta { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  .observation-grid, .implication-grid, .deliverables, .partner-services { grid-template-columns: 1fr; }
+  .tier-grid { grid-template-columns: 1fr; gap: 18px; }
+  .pattern-block { margin: 0 -32px; padding: 40px 32px; }
+}
+
+@media (max-width: 760px) {
+  .page-wrap { padding: 0 24px; }
+  .hero { padding: 40px 0 40px; }
+  .hero-title { font-size: 48px; }
+  .hero-sub { font-size: 19px; }
+  .hero-meta { font-size: 10px; gap: 8px; }
+  .lead { font-size: 19px; }
+  .section { padding: 56px 0; }
+  .section-title { font-size: 32px; }
+  .observation-card { padding: 24px; }
+  .obs-num { font-size: 36px; }
+  .obs-lead { font-size: 20px; }
+  .pattern-block { margin: 0 -24px; padding: 36px 24px; }
+  .pattern-title { font-size: 28px; }
+  .pattern-summary { font-size: 19px; }
+  .implication-card { padding: 24px; }
+  .impl-lead { font-size: 18px; }
+  .partner-block { padding: 36px 28px; }
+  .partner-title { font-size: 30px; }
+  .footer-row { flex-direction: column; gap: 12px; text-align: center; }
+  .footer-tagline { padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <header class="masthead">
+    <div class="masthead-brand"><strong>SuperSymm</strong> · High-Level Audit</div>
+    <div class="masthead-date">May 14, 2026</div>
+  </header>
+
+  <section class="hero">
+    <h1 class="hero-title">Meridian Wealth <em>Partners</em></h1>
+    <p class="hero-sub">An independent wealth advisor serving tech professionals across the Bay Area, with a stated focus on stock-comp planning.</p>
+    <div class="hero-meta">
+      <span>RIA</span>
+      <span class="hero-meta-divider">·</span>
+      <span>Wealth Management</span>
+      <span class="hero-meta-divider">·</span>
+      <span>Bay Area, CA</span>
+      <span class="hero-meta-divider">·</span>
+      <a href="https://meridianwealth.example" target="_blank" rel="noopener">meridianwealth.example</a>
+    </div>
+  </section>
+
+  <p class="lead">This is a high-level audit of Meridian Wealth Partners' digital marketing presence — what we observed across the website, LinkedIn, AI search visibility, and the broader Bay Area RIA landscape. The goal is to identify where opportunity sits today, and where the highest-leverage areas of investigation likely live.</p>
+  <p class="lead-link">Who is SuperSymm? → <a href="https://supersymm.com/about" target="_blank" rel="noopener">A multi-channel marketing agency for RIAs and independent advisors.</a></p>
+
+  <!-- 5. WHAT WE OBSERVED -->
+  <section class="section">
+    <div class="section-eyebrow">01 / Observations</div>
+    <h2 class="section-title">What We Observed</h2>
+    <p class="section-intro">Four areas where we noticed patterns worth thinking about — starting with the broader category context and then narrowing to your specific surfaces.</p>
+
+    <div class="observation-grid">
+
+      <!-- OBSERVATION 1: MARKET (always first) -->
+      <div class="observation-card market">
+        <div class="obs-num-row">
+          <div class="obs-num">1</div>
+          <h3 class="obs-lead">The Bay Area wealth advisory category has consolidated around three messaging archetypes.</h3>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Market</span>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">Observation</span>
+          <p class="obs-mode-text">Across the dozen-plus Bay Area RIAs we looked at, messaging clusters around three patterns: holistic-comprehensive planning, fiduciary-fee-only positioning, and niche-specialty depth. The first two represent the established category default. The third is where the interesting movement is happening.</p>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">What this may indicate</span>
+          <p class="obs-mode-text">When a category becomes saturated with similar messaging, niche-specialty positioning typically wins inbound. In your case, stock-comp planning for tech professionals is exactly that kind of niche — but it's worth understanding how prospects in your region actually search and discover firms in this space.</p>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">The opportunity</span>
+          <p class="obs-mode-text">Firms that lead with specialty depth in their public surfaces tend to convert higher in your category. There's a real opening here to occupy the "stock-comp planning" position more clearly than any current competitor has.</p>
+        </div>
+      </div>
+
+      <!-- OBSERVATION 2: DIGITAL -->
+      <div class="observation-card">
+        <div class="obs-num-row">
+          <div class="obs-num">2</div>
+          <h3 class="obs-lead">Your stock-comp specialty is present but doesn't lead.</h3>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Digital</span>
+          <span class="tag">Market</span>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">Observation</span>
+          <p class="obs-mode-text">The phrase "stock-comp planning" appears on your services page, three scrolls down. Your homepage hero leads with "comprehensive financial planning" — language that matches the category default we saw in observation 1.</p>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">What this may indicate</span>
+          <p class="obs-mode-text">The thing that most differentiates Meridian — the stock-comp specialty — may be undersold in the highest-traffic area of your site. We'd want to investigate whether this reflects a deliberate positioning choice (e.g., concern about narrowing the funnel) or simply a homepage structure that grew organically.</p>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">The opportunity</span>
+          <p class="obs-mode-text">Homepages that lead with specialty depth tend to outperform generalist framing in saturated categories. Worth exploring whether a specialty-led restructure fits your current positioning roadmap.</p>
+        </div>
+      </div>
+
+      <!-- OBSERVATION 3: SEO/AEO -->
+      <div class="observation-card">
+        <div class="obs-num-row">
+          <div class="obs-num">3</div>
+          <h3 class="obs-lead">AI search currently surfaces competitors for your niche queries.</h3>
+        </div>
+        <div class="tag-row">
+          <span class="tag">SEO/AEO</span>
+          <span class="tag">Market</span>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">Observation</span>
+          <p class="obs-mode-text">When we asked ChatGPT and Perplexity for "advisors specializing in stock compensation in the Bay Area," two competitor firms appeared. Meridian did not. Querying directly for "Meridian Wealth Partners" returned general information but didn't highlight the stock-comp specialty.</p>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">What this may indicate</span>
+          <p class="obs-mode-text">AI search models tend to source from indexed content that has accumulated over time — blog posts, third-party mentions, structured About content. If the specialty isn't documented in those sources, the AI doesn't know to mention it. Worth investigating which sources currently shape your AI search presence.</p>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">The opportunity</span>
+          <p class="obs-mode-text">AI search visibility compounds over 12-18 months as content gets indexed. Firms that establish their specialty in this layer earlier tend to be the ones AI tools cite by default — a meaningful long-term tailwind.</p>
+        </div>
+      </div>
+
+      <!-- OBSERVATION 4: CONTENT STRATEGY / SOCIAL -->
+      <div class="observation-card">
+        <div class="obs-num-row">
+          <div class="obs-num">4</div>
+          <h3 class="obs-lead">Cadence varies meaningfully across your content surfaces.</h3>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Social</span>
+          <span class="tag">SEO/AEO</span>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">Observation</span>
+          <p class="obs-mode-text">Your blog hasn't published since March of last year. LinkedIn shows steady posting from your founder, but the firm's company page is quieter. There's no newsletter or recurring content surface we could find.</p>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">What this may indicate</span>
+          <p class="obs-mode-text">In categories like wealth advisory, prospects often research across multiple surfaces before reaching out — and content cadence is one of the signals they read for momentum. The pattern here could reflect a deliberate channel deprioritization, or it could be an area where attention has simply slipped. Worth investigating which.</p>
+        </div>
+        <div class="obs-mode">
+          <span class="obs-mode-label">The opportunity</span>
+          <p class="obs-mode-text">A consistent content cadence — even at 1-2 pieces per month — tends to be high-leverage for SEO and AI search visibility over time. For a specialty firm, this is also where you build the documented expertise that AI tools index.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. PATTERN -->
+  <section class="pattern-block">
+    <div class="pattern-eyebrow">02 / Pattern</div>
+    <h2 class="pattern-title">The Pattern We're Seeing</h2>
+    <p class="pattern-summary">The pieces of a strong specialty position are already here — but they're scattered across surfaces in a way that doesn't compound, and competitors are filling the gap in AI search where you could be leading.</p>
+    <ul class="pattern-bullets">
+      <li class="pattern-bullet">Your stock-comp specialty exists in your offering, but doesn't lead in your most-trafficked surfaces.</li>
+      <li class="pattern-bullet">AI search is currently citing competitors who have done the indexable groundwork — a window that's closing.</li>
+      <li class="pattern-bullet">Content cadence inconsistency means the documented expertise that would shift AI visibility isn't accumulating.</li>
+    </ul>
+  </section>
+
+  <!-- 7. IMPLICATIONS -->
+  <section class="section">
+    <div class="section-eyebrow">03 / Implications</div>
+    <h2 class="section-title">What This Suggests</h2>
+    <p class="section-intro">Four areas where the pattern points toward meaningful opportunity. None of these are prescriptions — they're directions worth exploring further.</p>
+
+    <div class="implication-grid">
+
+      <div class="implication-card">
+        <h3 class="impl-lead">Specialty-led positioning is the highest-leverage opportunity.</h3>
+        <div class="tag-row">
+          <span class="tag">Market</span>
+          <span class="tag">Digital</span>
+        </div>
+        <p class="impl-text">The category is saturated with generalist messaging, and the firms breaking out in your space are doing so on specialty depth. Worth exploring how aggressively to lean into the stock-comp focus across your public surfaces — homepage, services, About, and outbound messaging.</p>
+      </div>
+
+      <div class="implication-card">
+        <h3 class="impl-lead">AI search visibility compounds — earlier intervention pays disproportionately.</h3>
+        <div class="tag-row">
+          <span class="tag">SEO/AEO</span>
+        </div>
+        <p class="impl-text">The way AI tools cite firms today is shaped by content indexed over the previous 12-18 months. Establishing your specialty in indexable sources now means AI tools will cite you by default a year from now — when that visibility becomes much harder to acquire.</p>
+      </div>
+
+      <div class="implication-card">
+        <h3 class="impl-lead">A modest content cadence often unlocks outsized visibility gains.</h3>
+        <div class="tag-row">
+          <span class="tag">Content Strategy</span>
+          <span class="tag">SEO/AEO</span>
+        </div>
+        <p class="impl-text">For specialty firms, 1-2 pieces per month focused on the niche is often enough to shift AI search positioning meaningfully over 6-12 months. The bar isn't volume — it's specificity and consistency.</p>
+      </div>
+
+      <div class="implication-card">
+        <h3 class="impl-lead">Channel consolidation tends to outperform channel expansion.</h3>
+        <div class="tag-row">
+          <span class="tag">Social</span>
+          <span class="tag">Content Strategy</span>
+        </div>
+        <p class="impl-text">Rather than adding new social surfaces, firms in your category often see better returns from tightening cadence on the channels already showing momentum. Your founder's LinkedIn presence is a real asset — worth investigating how to compound it.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. PLAYBOOK DELIVERABLES -->
+  <section class="section">
+    <div class="section-eyebrow">04 / Your Playbook</div>
+    <h2 class="section-title">What's Inside a SuperSymm Playbook</h2>
+    <p class="playbook-intro">A high-level audit identifies where the opportunities are. A <em>SuperSymm Digital Marketing Playbook</em> delivers the actual plan to execute against them — built specifically for your firm, industry, and capacity.</p>
+
+    <div class="deliverables">
+      <div class="deliverable">
+        <div class="deliverable-title">Custom marketing playbook</div>
+        <div class="deliverable-desc">A 30-90 day action plan tailored to your firm, industry, and capacity — not a template.</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-title">Persona-level audience analysis</div>
+        <div class="deliverable-desc">Documented motivations, objections, and channel preferences for each segment you serve.</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-title">Competitive analysis with SWOT</div>
+        <div class="deliverable-desc">Feature-matrix comparison of your top 2-3 competitors with positioning recommendations.</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-title">90-day content calendar</div>
+        <div class="deliverable-desc">Publishing calendar with topics, formats, and channel-specific posts — mapped to your capacity.</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-title">Ready-to-publish content</div>
+        <div class="deliverable-desc">Actual social posts, blog drafts, and email sequences — written, compliance-ready, and ready to ship.</div>
+      </div>
+      <div class="deliverable">
+        <div class="deliverable-title">Weekly activation plan</div>
+        <div class="deliverable-desc">Week-by-week sequencing of what to do, in what order, with what capacity — no guesswork.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. PRICING TIERS -->
+  <section class="section">
+    <div class="section-eyebrow accent">05 / Next</div>
+    <h2 class="section-title">Ready to Build Your Playbook?</h2>
+    <p class="pricing-intro">Choose the playbook depth that fits your firm. After payment, we'll send the intake form to gather the specifics we need to build it.</p>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-label">Tier 1</div>
+        <h3 class="tier-name">Marketing Audit</h3>
+        <div class="tier-price">$497</div>
+        <div class="tier-price-suffix">one-time · delivered in 5-7 days</div>
+        <p class="tier-desc">Full analytical audit and activation plan tailored to your firm.</p>
+        <ul class="tier-features">
+          <li class="tier-feature">8-section deep audit</li>
+          <li class="tier-feature">Persona-level audience analysis</li>
+          <li class="tier-feature">Competitive analysis with SWOT</li>
+          <li class="tier-feature">90-day activation plan</li>
+        </ul>
+        <a href="#stripe-tier1" class="tier-cta">Start Tier 1 →</a>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-label">Tier 2</div>
+        <h3 class="tier-name">Audit + Channels</h3>
+        <div class="tier-price">$1,200</div>
+        <div class="tier-price-suffix">one-time · delivered in 7-10 days</div>
+        <p class="tier-desc">Tier 1 plus paid media and social strategy.</p>
+        <ul class="tier-features">
+          <li class="tier-feature">Everything in Tier 1</li>
+          <li class="tier-feature">Paid media campaign setup</li>
+          <li class="tier-feature">Social media content strategy</li>
+          <li class="tier-feature">Channel-specific ad creative</li>
+        </ul>
+        <a href="#stripe-tier2" class="tier-cta">Start Tier 2 →</a>
+      </div>
+
+      <div class="tier-card recommended">
+        <div class="tier-badge">Recommended for DIY</div>
+        <div class="tier-label">Tier 3</div>
+        <h3 class="tier-name">Full Campaign Kit</h3>
+        <div class="tier-price">$2,500</div>
+        <div class="tier-price-suffix">one-time · delivered in 10-14 days</div>
+        <p class="tier-desc">Complete playbook with content calendar and ready-to-publish posts.</p>
+        <ul class="tier-features">
+          <li class="tier-feature">Everything in Tier 2</li>
+          <li class="tier-feature">90-day content calendar</li>
+          <li class="tier-feature">Ready-to-publish posts &amp; emails</li>
+          <li class="tier-feature">Email lifecycle sequences</li>
+          <li class="tier-feature">Compliance-ready workflow</li>
+        </ul>
+        <a href="#stripe-tier3" class="tier-cta">Start Tier 3 →</a>
+        <a href="#sample-playbook" target="_blank" rel="noopener" class="tier-sample-link">See a sample playbook →</a>
+      </div>
+    </div>
+
+    <!-- 10. PARTNER SECTION — tinted card, NOT dark -->
+    <div class="partner-block">
+      <div class="partner-logo-row">
+        <span class="partner-logo">S</span>
+        <span class="partner-logo-text">SuperSymm</span>
+      </div>
+      <div class="partner-eyebrow">Don't want to DIY?</div>
+      <h2 class="partner-title">Need a partner to <em>build and run</em> all of this for you?</h2>
+      <p class="partner-intro">A playbook tells you what to do. SuperSymm can also be the team that executes it — building your tech stack, automating your channels, and running the day-to-day so you can focus on the client work that actually generates revenue.</p>
+
+      <div class="partner-services">
+        <div class="partner-service">Build &amp; integrate your marketing tech stack</div>
+        <div class="partner-service">Automate social media posting &amp; engagement</div>
+        <div class="partner-service">Email lifecycle &amp; nurture campaigns</div>
+        <div class="partner-service">Lead generation &amp; qualification systems</div>
+        <div class="partner-service">Paid media management &amp; optimization</div>
+        <div class="partner-service">Content production &amp; publishing workflows</div>
+      </div>
+
+      <a href="https://calendly.com/supersymm" target="_blank" rel="noopener" class="partner-cta">Book a call to chat more →</a>
+    </div>
+
+    <!-- 11. SECONDARY CTA -->
+    <div class="secondary-cta">
+      <p class="secondary-cta-text">Have questions about the playbook tiers? <a href="https://calendly.com/supersymm" target="_blank" rel="noopener">Book a 15-minute call →</a></p>
+    </div>
+  </section>
+
+</div>
+
+<!-- 12. FOOTER -->
+<footer class="footer">
+  <div class="page-wrap">
+    <div class="footer-row">
+      <div class="footer-brand">SuperSymm</div>
+      <div class="footer-tagline">Multi-channel marketing agency for RIAs and independent advisors</div>
+      <a href="https://supersymm.com" class="footer-link">supersymm.com</a>
+    </div>
+    <div class="footer-meta">
+      Audit for Meridian Wealth Partners · Prepared May 14, 2026 · Not for distribution
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
